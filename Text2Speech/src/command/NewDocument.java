@@ -10,12 +10,12 @@ public class NewDocument implements ActionListener {
 	
 	public NewDocument(JTextArea textArea) {
 		this.textArea = textArea;
-		System.out.println("New Factory2");
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println(e.getActionCommand());
+		textArea.setText("");
+		//TO BE ADDED: DOCUMENT CHANGES
 	}
 	
 

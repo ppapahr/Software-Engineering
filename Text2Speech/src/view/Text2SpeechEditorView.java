@@ -6,8 +6,9 @@
 
 package view;
 
+import java.awt.Dimension;
+
 import javax.swing.*; 
-import java.awt.event.*; 
 import command.CommandFactory;
 
 //Class implements swings ActionListener
@@ -20,14 +21,13 @@ public class Text2SpeechEditorView{
 	//window components: i.e: frame,menus,text
 	private static JFrame frame;
 	private static JMenuBar menuBar;
-	private static JTextArea textArea;
-	
+	private static JTextArea textArea = new JTextArea();
+		
 	//command listeners
 	private static CommandFactory commandFactory;
 	
 	//Editor constructor
 	public Text2SpeechEditorView(){
-	    commandFactory = new CommandFactory(textArea);
 		buildApp();
 	}
 	
@@ -42,6 +42,9 @@ public class Text2SpeechEditorView{
 	private void createMenu(){		
 	    JMenuBar menuBar = new JMenuBar();
 	    JMenu menuFile = new JMenu("File");
+	    	    
+	    //initialize command factory
+	    commandFactory = new CommandFactory(textArea);
 	    
 	    //menu items
         JMenuItem menuFileNew = new JMenuItem("New"); 
@@ -65,10 +68,9 @@ public class Text2SpeechEditorView{
 	}
 	
 	private static void createText(){
-		textArea = new JTextArea();
 		//add textArea to frame
 		frame.add(textArea);
-		textArea.setBounds(0,0,windowWidth,windowHeight);
+		textArea.setBounds(0,25,windowWidth,windowHeight);
 	}
 	
 	private void buildApp(){

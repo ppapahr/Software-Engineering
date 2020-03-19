@@ -19,10 +19,8 @@ public class CommandFactory {
 	}
 	
 	public ActionListener createCommand(String s) {
-		//Object newDoc = Class.forName(commands.get(s)).newInstance();
 		ActionListener temp = null;
 		if(s.equals("New")) {
-			System.out.println(newDocument);
 			return newDocument;
 		}
 		//add other commands
