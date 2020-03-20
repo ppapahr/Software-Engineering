@@ -54,7 +54,7 @@ public class Text2SpeechEditorView{
         //Add action listeners for menu items
         menuFileNew.addActionListener(commandFactory.createCommand("New"));
         menuFileOpen.addActionListener(null);
-        menuFileSave.addActionListener(null);
+        menuFileSave.addActionListener(commandFactory.createCommand("Save"));
 
         
         //add items to menu "File"
