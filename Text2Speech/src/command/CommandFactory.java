@@ -14,6 +14,7 @@ public class CommandFactory {
 	private OpenDocument openDocument;
 	private SaveDocument saveDocument;
 	
+	public CommandFactory(JTextArea textArea) {
 		//GUI Components
 		this.textArea = textArea;
 		this.frame = frame;
