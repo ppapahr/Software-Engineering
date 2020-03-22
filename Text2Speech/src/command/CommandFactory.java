@@ -27,8 +27,9 @@ public class CommandFactory {
 		ActionListener temp = null;
 		if(s.equals("New")) {
 			return newDocument;
-		} else if(s.equals("Save")) {
-			return saveDocument;
+		}
+		else if(s.equals("Open...")) {
+			return openDocument;
 		}
 		//add other commands
 		return temp;
