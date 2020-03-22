@@ -7,7 +7,6 @@
 package view;
 
 import java.awt.Dimension;
-
 import javax.swing.*; 
 import command.CommandFactory;
 
@@ -22,7 +21,7 @@ public class Text2SpeechEditorView{
 	private static JFrame frame;
 	private static JMenuBar menuBar;
 	private static JTextArea textArea = new JTextArea();
-		
+	private static JScrollPane scrollableTextPane = new JScrollPane(textArea);
 	//command listeners
 	private static CommandFactory commandFactory;
 	
@@ -36,24 +35,26 @@ public class Text2SpeechEditorView{
 	    frame = new JFrame("Text2Speech Editor");
 	    frame.setSize(windowWidth,windowHeight);
 	    frame.setVisible(true);
+	    frame.setJMenuBar(menuBar);
+	    frame.add(scrollableTextPane);
 	}
 	
 	//Creates the File Menu and its items
 	private void createMenu(){		
-	    JMenuBar menuBar = new JMenuBar();
+	    menuBar = new JMenuBar();
 	    JMenu menuFile = new JMenu("File");
 	    	    
 	    //initialize command factory
-	    commandFactory = new CommandFactory(textArea);
+	    commandFactory = new CommandFactory(textArea, frame);
 	    
 	    //menu items
         JMenuItem menuFileNew = new JMenuItem("New"); 
-        JMenuItem menuFileOpen = new JMenuItem("Open");
+        JMenuItem menuFileOpen = new JMenuItem("Open...");
         JMenuItem menuFileSave = new JMenuItem("Save"); 
 
         //Add action listeners for menu items
         menuFileNew.addActionListener(commandFactory.createCommand("New"));
-        menuFileOpen.addActionListener(null);
+        menuFileOpen.addActionListener(commandFactory.createCommand("Open..."));
         menuFileSave.addActionListener(commandFactory.createCommand("Save"));
 
         
@@ -64,19 +65,21 @@ public class Text2SpeechEditorView{
 	    //add "File" menu to the bar.
 	    menuBar.add(menuFile);
 	
-	    frame.setJMenuBar(menuBar);
 	}
 	
 	private static void createText(){
 		//add textArea to frame
-		frame.add(textArea);
+		textArea.setEditable(true);
+		textArea.setVisible(true);
 		textArea.setBounds(0,25,windowWidth,windowHeight);
+		textArea.setWrapStyleWord(true);
+		textArea.setLineWrap(true);
 	}
 	
 	private void buildApp(){
-		createWindow();
-		createMenu();
 		createText();
+		createMenu();
+		createWindow();
 	}
 
 	public static void main(String[] args){
