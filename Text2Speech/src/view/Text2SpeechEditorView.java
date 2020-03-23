@@ -1,89 +1,79 @@
-/*
- TO DO LIST:
- SCROLL AREA IN TEXT AREA
- FINISH ALL OPERATIONS ( SAVE EXIT ETC. )
- */
-
 package view;
 
-import java.awt.Dimension;
-import javax.swing.*; 
+import java.awt.EventQueue;
+import javax.swing.JFrame;
+import javax.swing.JToolBar;
 import command.CommandFactory;
+import java.awt.BorderLayout;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
-//Class implements swings ActionListener
-public class Text2SpeechEditorView{
-	
-	//window size
-	private static int windowWidth = 500;
-	private static int windowHeight = 500;
-	
-	//window components: i.e: frame,menus,text
-	private static JFrame frame;
-	private static JMenuBar menuBar;
-	private static JTextArea textArea = new JTextArea();
-	private static JScrollPane scrollableTextPane = new JScrollPane(textArea);
+public class Text2SpeechEditorView {
+
+	//Swing components
+	private JFrame frame;
+	JTextArea textArea = new JTextArea();
+
 	//command listeners
 	private static CommandFactory commandFactory;
 	
-	//Editor constructor
-	public Text2SpeechEditorView(){
-		buildApp();
+	//Constructor
+	public Text2SpeechEditorView() {
+		initialize();
 	}
-	
-	//Sets window dimensions and creates the JFrame
-	private void createWindow(){
-	    frame = new JFrame("Text2Speech Editor");
-	    frame.setSize(windowWidth,windowHeight);
-	    frame.setVisible(true);
-	    frame.setJMenuBar(menuBar);
-	    frame.add(scrollableTextPane);
-	}
-	
-	//Creates the File Menu and its items
-	private void createMenu(){		
-	    menuBar = new JMenuBar();
-	    JMenu menuFile = new JMenu("File");
-	    	    
+
+	//Basic window function
+	private void initialize() {
+		frame = new JFrame("Text2Speech Editor");
+		frame.setBounds(100, 100, 500, 500);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 	    //initialize command factory
 	    commandFactory = new CommandFactory(textArea, frame);
 	    
-	    //menu items
-        JMenuItem menuFileNew = new JMenuItem("New"); 
-        JMenuItem menuFileOpen = new JMenuItem("Open...");
-        JMenuItem menuFileSave = new JMenuItem("Save"); 
+		//initialize toolbar
+		JToolBar toolBar = new JToolBar();
+		frame.getContentPane().add(toolBar, BorderLayout.NORTH);
+		//initialize menubar
+		JMenuBar menuBar = new JMenuBar();
+		toolBar.add(menuBar);
+		//Add menu
+		JMenu mnNewMenu = new JMenu("File");
+		menuBar.add(mnNewMenu);
+		//Add menu items and actionListeners linking to commands
+		JMenuItem mntmNewMenuItem = new JMenuItem("New");
+		mnNewMenu.add(mntmNewMenuItem);
+		mntmNewMenuItem.addActionListener(commandFactory.createCommand("New"));
+		
+		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Open...");
+		mnNewMenu.add(mntmNewMenuItem_2);
+		mntmNewMenuItem_2.addActionListener(commandFactory.createCommand("Open..."));
 
-        //Add action listeners for menu items
-        menuFileNew.addActionListener(commandFactory.createCommand("New"));
-        menuFileOpen.addActionListener(commandFactory.createCommand("Open..."));
-        menuFileSave.addActionListener(commandFactory.createCommand("Save"));
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Save");
+		mnNewMenu.add(mntmNewMenuItem_1);
+		mntmNewMenuItem_1.addActionListener(commandFactory.createCommand("Save"));
 
-        
-        //add items to menu "File"
-	    menuFile.add(menuFileNew);
-	    menuFile.add(menuFileOpen);
-	    menuFile.add(menuFileSave);
-	    //add "File" menu to the bar.
-	    menuBar.add(menuFile);
-	
-	}
-	
-	private static void createText(){
-		//add textArea to frame
-		textArea.setEditable(true);
-		textArea.setVisible(true);
-		textArea.setBounds(0,25,windowWidth,windowHeight);
-		textArea.setWrapStyleWord(true);
-		textArea.setLineWrap(true);
-	}
-	
-	private void buildApp(){
-		createText();
-		createMenu();
-		createWindow();
+		//Add scroll pane to the frame
+		JScrollPane scrollPane = new JScrollPane();
+		frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
+		//add text area to scrollpane
+		scrollPane.setViewportView(textArea);
 	}
 
-	public static void main(String[] args){
-	    Text2SpeechEditorView mainEditor = new Text2SpeechEditorView();
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Text2SpeechEditorView window = new Text2SpeechEditorView();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 	
 }
