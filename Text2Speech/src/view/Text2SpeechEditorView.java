@@ -75,6 +75,9 @@ public class Text2SpeechEditorView {
 		//add text area to scrollpane
 		scrollPane.setViewportView(textArea);
 		
+		textArea.setWrapStyleWord(true);
+		textArea.setLineWrap(true);
+		
 	}
 
 	public static void main(String[] args) {
