@@ -1,9 +1,16 @@
 package view;
 
 import java.awt.EventQueue;
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 import javax.swing.JToolBar;
 import command.CommandFactory;
+import encodingstrategies.EncodingStrategy;
+import model.Document;
+import model.Line;
+import text2speechapis.TextToSpeechAPI;
+
 import java.awt.BorderLayout;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -24,15 +31,21 @@ public class Text2SpeechEditorView {
 	public Text2SpeechEditorView() {
 		initialize();
 	}
-
+	
+	//Document
+	private Document curDocument;
+	
 	//Basic window function
 	private void initialize() {
 		frame = new JFrame("Text2Speech Editor");
 		frame.setBounds(100, 100, 500, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		//Initialize Document
+		curDocument = new Document();
+		
 	    //initialize command factory
-	    commandFactory = new CommandFactory(textArea, frame);
+	    commandFactory = new CommandFactory(textArea, frame, curDocument);
 	    
 		//initialize toolbar
 		JToolBar toolBar = new JToolBar();
@@ -61,6 +74,7 @@ public class Text2SpeechEditorView {
 		frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
 		//add text area to scrollpane
 		scrollPane.setViewportView(textArea);
+		
 	}
 
 	public static void main(String[] args) {

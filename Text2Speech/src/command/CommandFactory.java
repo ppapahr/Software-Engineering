@@ -2,27 +2,34 @@ package command;
 
 import java.awt.event.ActionListener;
 import javax.swing.JTextArea;
+
+import model.Document;
+
 import javax.swing.*;
 
 public class CommandFactory {
 	
+	//constructor passed objects
 	JTextArea textArea;
 	JFrame frame;
+	Document curDocument;
+	//commands
 	public ActionListener newListener = null;
 	
 	private NewDocument newDocument;
 	private SaveDocument saveDocument;
 	private OpenDocument openDocument;
 	
-	public CommandFactory(JTextArea textArea, JFrame frame) {
+	public CommandFactory(JTextArea textArea, JFrame frame, Document curDocument) {
 		//GUI Components
 		this.textArea = textArea;
 		this.frame = frame;
+		//Document
+		this.curDocument = curDocument;
 		//initialize commands
 		newDocument = new NewDocument(textArea);
 		saveDocument = new SaveDocument(textArea);
 		openDocument = new OpenDocument(textArea, frame);
-		
 	}
 	
 	public ActionListener createCommand(String s) {
