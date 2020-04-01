@@ -2,9 +2,7 @@ package command;
 
 import java.awt.event.ActionListener;
 import javax.swing.JTextArea;
-
 import model.Document;
-
 import javax.swing.*;
 
 public class CommandFactory {
@@ -12,6 +10,7 @@ public class CommandFactory {
 	//constructor passed objects
 	JTextArea textArea;
 	JFrame frame;
+	//document object carried over from view
 	Document curDocument;
 	//commands
 	public ActionListener newListener = null;
@@ -27,7 +26,7 @@ public class CommandFactory {
 		//Document
 		this.curDocument = curDocument;
 		//initialize commands
-		newDocument = new NewDocument(textArea);
+		newDocument = new NewDocument(textArea, frame, curDocument);
 		saveDocument = new SaveDocument(textArea);
 		openDocument = new OpenDocument(textArea, frame);
 	}
