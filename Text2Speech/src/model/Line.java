@@ -15,6 +15,14 @@ public class Line {
 		this.audioManager = audioManager;
 	}
 	
+	//getters
+	
+	public ArrayList<String> getWords() {
+		return words;
+	}
+	
+	// Text2Speech & Encoding functions
+	
 	public void playLine() {
 		
 	}

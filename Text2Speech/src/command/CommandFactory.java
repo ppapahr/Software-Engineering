@@ -27,7 +27,7 @@ public class CommandFactory {
 		this.curDocument = curDocument;
 		//initialize commands
 		newDocument = new NewDocument(textArea, frame, curDocument);
-		saveDocument = new SaveDocument(textArea);
+		saveDocument = new SaveDocument(textArea, curDocument);
 		openDocument = new OpenDocument(textArea, frame);
 	}
 	

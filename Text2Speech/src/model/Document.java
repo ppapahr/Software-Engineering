@@ -40,6 +40,27 @@ public class Document {
 		this.title = title;
 	}
 	
+	//getters
+	public String getAuthor() {
+		return author;
+	}
+	
+	public LocalDate getCreationDate() {
+		return creationDate;
+	}
+	
+	public LocalDate getSavedDate() {
+		return savedDate;
+	}
+	
+	public String getTitle() {
+		return title;
+	}
+	
+	public ArrayList<Line> getContents() {
+		return contents;
+	}
+	
 	//Text2speech functions
 	public void playContents() {
 		
