@@ -39,6 +39,10 @@ public class Document {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	
+	public void setContents(ArrayList<Line> contents) {
+		this.contents = contents;
+	}
 
 	//getters
 	public String getAuthor() {
@@ -61,9 +65,7 @@ public class Document {
 		return contents;
 	}
 
-	public void setContents(ArrayList<Line> contents) {
-		this.contents = contents;
-	}
+	
 
 	//Text2speech functions
 	public void playContents() {

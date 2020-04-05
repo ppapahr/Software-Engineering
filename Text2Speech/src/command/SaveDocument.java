@@ -37,7 +37,7 @@ public class SaveDocument implements ActionListener {
 		savedText.append("Saved Date: " + curDocument.getSavedDate().toString() + "\n");
 		savedText.append(textArea.getText());
 		
-		//The following can only works if we make an editDocument class that "saves" the textArea to the curDocuments components
+		//The following can only work if we make an editDocument class that "saves" the textArea to the curDocuments components
 		/*
 		//transfer curDocument's contents to savedText
 		for(int i=0; i<curDocument.getContents().size(); i++) {
