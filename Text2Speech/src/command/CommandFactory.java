@@ -3,6 +3,7 @@ package command;
 import java.awt.event.ActionListener;
 import javax.swing.JTextArea;
 import model.Document;
+import model.Line;
 import javax.swing.*;
 
 public class CommandFactory {
@@ -28,7 +29,7 @@ public class CommandFactory {
 		//initialize commands
 		newDocument = new NewDocument(textArea, frame, curDocument);
 		saveDocument = new SaveDocument(textArea);
-		openDocument = new OpenDocument(textArea, frame);
+		openDocument = new OpenDocument(textArea, frame, curDocument);
 	}
 	
 	public ActionListener createCommand(String s) {

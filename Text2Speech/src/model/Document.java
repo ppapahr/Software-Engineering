@@ -40,6 +40,10 @@ public class Document {
 		this.title = title;
 	}
 	
+	public void setContents(ArrayList<Line> contents) {
+		this.contents = contents;
+	}
+	
 	//Text2speech functions
 	public void playContents() {
 		
