@@ -3,10 +3,11 @@ package command;
 import java.awt.event.ActionListener;
 import javax.swing.JTextArea;
 import model.Document;
+import model.Line;
 import javax.swing.*;
 
 public class CommandFactory {
-	
+
 	//constructor passed objects
 	JTextArea textArea;
 	JFrame frame;
@@ -14,11 +15,11 @@ public class CommandFactory {
 	Document curDocument;
 	//commands
 	public ActionListener newListener = null;
-	
+
 	private NewDocument newDocument;
 	private SaveDocument saveDocument;
 	private OpenDocument openDocument;
-	
+
 	public CommandFactory(JTextArea textArea, JFrame frame, Document curDocument) {
 		//GUI Components
 		this.textArea = textArea;
@@ -28,9 +29,9 @@ public class CommandFactory {
 		//initialize commands
 		newDocument = new NewDocument(textArea, frame, curDocument);
 		saveDocument = new SaveDocument(textArea, curDocument);
-		openDocument = new OpenDocument(textArea, frame);
+		openDocument = new OpenDocument(textArea, frame, curDocument);
 	}
-	
+
 	public ActionListener createCommand(String s) {
 		ActionListener temp = null;
 		if(s.equals("New")) {
