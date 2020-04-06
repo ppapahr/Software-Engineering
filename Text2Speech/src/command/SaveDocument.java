@@ -35,9 +35,6 @@ public class SaveDocument implements ActionListener {
 		savedText.append("Title: " + curDocument.getTitle() + "\n");
 		savedText.append("Creation Date: " + curDocument.getCreationDate().toString() + "\n");
 		savedText.append("Saved Date: " + curDocument.getSavedDate().toString() + "\n");
-		//savedText.append(textArea.getText());
-		
-		//The following can only work if we make an editDocument class that "saves" the textArea to the curDocuments components
 		
 		//transfer curDocument's contents to savedText
 		for(int i=0; i<curDocument.getContents().size(); i++) {
@@ -48,7 +45,7 @@ public class SaveDocument implements ActionListener {
 			savedText.append("\n");
 		}
 		
-		
+		//open gui dialog
 		FileNameExtensionFilter extensionFilter = new FileNameExtensionFilter("Text File", "txt");
 	    final JFileChooser saveAsFileChooser = new JFileChooser();
 	    saveAsFileChooser.setApproveButtonText("Save");
@@ -62,7 +59,8 @@ public class SaveDocument implements ActionListener {
 	    if (!file.getName().endsWith(".txt")) {
 	       file = new File(file.getAbsolutePath() + ".txt");
 	    }
-
+	    
+	    //write the buffer to the .txt file
 	    BufferedWriter outFile = null;
 	    try {
 	       outFile = new BufferedWriter(new FileWriter(file));
