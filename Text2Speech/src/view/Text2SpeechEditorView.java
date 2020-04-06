@@ -68,6 +68,10 @@ public class Text2SpeechEditorView {
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Save");
 		mnNewMenu.add(mntmNewMenuItem_1);
 		mntmNewMenuItem_1.addActionListener(commandFactory.createCommand("Save"));
+		
+		JMenuItem mntmNewMenuItem_0 = new JMenuItem("Edit");
+		mnNewMenu.add(mntmNewMenuItem_0);
+		mntmNewMenuItem_0.addActionListener(commandFactory.createCommand("Edit"));
 
 		//Add scroll pane to the frame
 		JScrollPane scrollPane = new JScrollPane();

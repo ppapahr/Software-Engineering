@@ -19,6 +19,7 @@ public class CommandFactory {
 	private NewDocument newDocument;
 	private SaveDocument saveDocument;
 	private OpenDocument openDocument;
+	private EditDocument editDocument;
 
 	public CommandFactory(JTextArea textArea, JFrame frame, Document curDocument) {
 		//GUI Components
@@ -30,6 +31,7 @@ public class CommandFactory {
 		newDocument = new NewDocument(textArea, frame, curDocument);
 		saveDocument = new SaveDocument(textArea, curDocument);
 		openDocument = new OpenDocument(textArea, frame, curDocument);
+		editDocument = new EditDocument(textArea, curDocument);
 	}
 
 	public ActionListener createCommand(String s) {
@@ -41,6 +43,9 @@ public class CommandFactory {
 		}
 		else if(s.equals("Open...")) {
 			return openDocument;
+		}
+		else if(s.equals("Edit")) {
+			return editDocument;
 		}
 		//add other commands
 		return temp;

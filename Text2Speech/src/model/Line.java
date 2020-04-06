@@ -15,6 +15,10 @@ public class Line {
 		this.audioManager = audioManager;
 	}
 	
+	public Line(ArrayList<String> words) {
+		this.words = words;
+	}
+	
 	//getters
 	
 	public ArrayList<String> getWords() {

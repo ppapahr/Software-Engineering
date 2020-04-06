@@ -35,10 +35,10 @@ public class SaveDocument implements ActionListener {
 		savedText.append("Title: " + curDocument.getTitle() + "\n");
 		savedText.append("Creation Date: " + curDocument.getCreationDate().toString() + "\n");
 		savedText.append("Saved Date: " + curDocument.getSavedDate().toString() + "\n");
-		savedText.append(textArea.getText());
+		//savedText.append(textArea.getText());
 		
 		//The following can only work if we make an editDocument class that "saves" the textArea to the curDocuments components
-		/*
+		
 		//transfer curDocument's contents to savedText
 		for(int i=0; i<curDocument.getContents().size(); i++) {
 			ArrayList<String> line = curDocument.getContents().get(i).getWords();
@@ -47,7 +47,7 @@ public class SaveDocument implements ActionListener {
 			}
 			savedText.append("\n");
 		}
-		*/
+		
 		
 		FileNameExtensionFilter extensionFilter = new FileNameExtensionFilter("Text File", "txt");
 	    final JFileChooser saveAsFileChooser = new JFileChooser();
