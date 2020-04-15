@@ -16,11 +16,7 @@ public class Document {
 	private LocalDate savedDate;
 
 	public Document() {
-		/*
-		this.contents = contents;
-		this.encodingStrategy = encodingStrategy;
-		this.audioManager = audioManager;
-		*/
+		this.contents = new ArrayList<Line>();
 	}
 
 	//setters
