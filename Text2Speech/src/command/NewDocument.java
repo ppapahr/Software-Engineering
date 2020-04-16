@@ -39,11 +39,15 @@ public class NewDocument implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		textArea.setText("");
+		createNewDocument();				
+	}
+	
+	public void createNewDocument() {
 		
 		//Reasons of use of JOptionPane simple popup: 
 		//Easy to use/get returned strings, Not alot of code needed, fast to implement and user friendly
 		if(test == 0) {
+			textArea.setText("");
 			author = (String)JOptionPane.showInputDialog(frame, "Please enter an author: ","Create new document.",JOptionPane.PLAIN_MESSAGE);
 			title = (String)JOptionPane.showInputDialog(frame, "Please enter a title: ", "Create new document.",JOptionPane.PLAIN_MESSAGE);
 		}
@@ -52,9 +56,7 @@ public class NewDocument implements ActionListener {
 		curDocument.setAuthor(author);
 		curDocument.setTitle(title);
 		curDocument.setCreationDate(LocalDate.now());
-		
-		System.out.println(curDocument.getContents().size());
-				
+		curDocument.getContents().clear();
 	}
 	
 
