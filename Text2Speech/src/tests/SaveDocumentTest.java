@@ -38,13 +38,13 @@ public class SaveDocumentTest {
 		
 		//initiate saveDocument functionality
 		//Please note that you need to save to D:\test.txt in order for test case to have the right path
-		SaveDocument saveDoc = new SaveDocument(null,testDoc);
+		SaveDocument saveDoc = new SaveDocument(null,testDoc, 1);
 		saveDoc.actionPerformed(null);
 		
 		//take the output and save it as string
 		String data = "";
 		try {
-			data = new String(Files.readAllBytes(Paths.get("D:\\test.txt")));
+			data = new String(Files.readAllBytes(Paths.get("test.txt")));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

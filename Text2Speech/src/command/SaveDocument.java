@@ -17,9 +17,18 @@ public class SaveDocument implements ActionListener {
 	
 	private Document curDocument;
 	
+	private int TEST_FLAG;
+	
 	public SaveDocument(JTextArea textArea, Document curDocument) {
 		this.textArea = textArea;
 		this.curDocument = curDocument;
+		this.TEST_FLAG = 0;
+	}
+	
+	public SaveDocument(JTextArea textArea, Document curDocument, int TEST_FLAG) {
+		this.textArea = textArea;
+		this.curDocument = curDocument;
+		this.TEST_FLAG = TEST_FLAG;
 	}
 
 	@Override
@@ -50,12 +59,21 @@ public class SaveDocument implements ActionListener {
 	    final JFileChooser saveAsFileChooser = new JFileChooser();
 	    saveAsFileChooser.setApproveButtonText("Save");
 	    saveAsFileChooser.setFileFilter(extensionFilter);
-	    int actionDialog = saveAsFileChooser.showOpenDialog(null);
-	    if (actionDialog != JFileChooser.APPROVE_OPTION) {
-	         return;
+	    if(TEST_FLAG == 0) {
+	    	int actionDialog = saveAsFileChooser.showOpenDialog(null);
+		    if (actionDialog != JFileChooser.APPROVE_OPTION) {
+		         return;
+		    }
 	    }
-		
-	    File file = saveAsFileChooser.getSelectedFile();
+	    
+	    File file;
+		if(TEST_FLAG == 0) {
+			file = saveAsFileChooser.getSelectedFile();
+		}else{
+			file = new File("test.txt");
+		}
+	    
+	    
 	    if (!file.getName().endsWith(".txt")) {
 	       file = new File(file.getAbsolutePath() + ".txt");
 	    }
