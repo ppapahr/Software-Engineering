@@ -3,9 +3,11 @@ package command;
 import javax.swing.*;
 import model.Document;
 import model.Line;
-import java.awt.event.*; 
+import java.awt.event.*;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays; 
+import java.util.Arrays;
+import java.util.Collections; 
 
 public class EditDocument implements ActionListener {
 	
@@ -19,22 +21,37 @@ public class EditDocument implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		ArrayList<Line> contents = new ArrayList<Line>();
-		//split textArea by lines
-		String l[] = textArea.getText().split("\\r?\\n");
-	    ArrayList<String> lines = new ArrayList<>(Arrays.asList(l));
-	    
-	    //System.out.println(lines);
-	    
-	    //split each line by whitespace characters and add the split list to line class object which is then added to contents
-		for(int i=0; i<lines.size(); i++) {
-			ArrayList<String> words = new ArrayList<>(Arrays.asList(lines.get(i).split("\\s+")));
-			Line temp = new Line(words);
-			contents.add(temp);
-			//System.out.println(words);
-		}
 		
-		//set the curDoc's contents
-		curDocument.setContents(contents);
+		//variable for acceptable action performed
+		int action = -1;
+		
+		ArrayList<Line> contents = new ArrayList<Line>();
+		ArrayList<String> lines = new ArrayList<String>();
+
+		//for testing pass existing text
+		if (e == null) {
+			String l[] = "This is the \nedited text".split("\\r?\\n");
+			Collections.addAll(lines, l);
+			action = 1;
+		}
+		else {
+			String l[] = textArea.getText().split("\\r?\\n"); 
+			Collections.addAll(lines, l);
+			action = 0;
+		}
+			
+				
+		if (action == 0 || action == 1) {
+			
+			//split each line by whitespace characters and add the split list to line class object which is then added to contents
+			for(int i=0; i<lines.size(); i++) {
+				ArrayList<String> words = new ArrayList<>(Arrays.asList(lines.get(i).split("\\s+")));
+				Line temp = new Line(words);
+				contents.add(temp);
+			}
+			
+			//set the curDoc's contents
+			curDocument.setContents(contents);
+		}
 	}
 }

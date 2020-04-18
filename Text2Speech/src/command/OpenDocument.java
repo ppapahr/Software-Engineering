@@ -39,16 +39,32 @@ public class OpenDocument implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		int returnVal = fc.showOpenDialog(frame);
 		
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
+		//variable for acceptable action performed
+		int action = -1;
+		
+		//for testing pass existing file
+		if (e == null) {
+			fc.setSelectedFile(new File("testFile.txt"));
+			action = 1;
+		}
+		else {
+			int returnVal = fc.showOpenDialog(frame);
+			 if (returnVal == JFileChooser.APPROVE_OPTION) {
+				 action = 0;
+			 }
+		}
+			
+				
+        if (action == 0 || action == 1) {
             File file = fc.getSelectedFile();            
             Scanner input;
             
 			try {
 				//reset caret position
-	            textArea.setCaretPosition(0);
-
+				if (action == 0) {
+					textArea.setCaretPosition(0);
+				}
 				input = new Scanner(file);
 				
 				//load stringBuilder with title,author,saved date and creation date.
@@ -77,17 +93,26 @@ public class OpenDocument implements ActionListener{
 				//reset StringBuilder buffer
 				sb.setLength(0);
 				
+				//stringBuilder for testing
+				StringBuilder tsb = new StringBuilder();
+				
 				//load StringBuilder and Line class with the rest of the file
 				while(input.hasNext()) {
-	            	sb.append(input.nextLine());
+					String nextLine = input.nextLine();
+	            	sb.append(nextLine);
 	            	sb.append("\n");
 	            	
+	            	tsb.append(nextLine);
+	            	tsb.append("\n");
+	            	
 	            	//split line in words and append them in an arraylist
-	            	ArrayList<String> words = new ArrayList<String>(Arrays.asList(sb.toString().split("\\s*")));
+	            	ArrayList<String> words = new ArrayList<String>(Arrays.asList(tsb.toString().split("\\s*")));
 	            	Line curLine = new Line(words, null, null);
 	            	
 	            	//add word arraylist in Document's content
 	            	contents.add(curLine);
+	            	
+	            	tsb.setLength(0);
 	            }
 	            input.close();
 	            
@@ -95,11 +120,13 @@ public class OpenDocument implements ActionListener{
 				curDocument.setAuthor(author);
 				curDocument.setTitle(title);
 				curDocument.setCreationDate(creationDate);
-				curDocument.setCreationDate(savedDate);
+				curDocument.setSavedDate(savedDate);
 				curDocument.setContents(contents);
-
-	            textArea.setText(sb.toString());
-	            
+				
+				if (action == 0) {
+					textArea.setText(sb.toString());
+				}
+				
 	            //reset StringBuilder buffer
 	            sb.setLength(0);
 	            	            
