@@ -22,18 +22,22 @@ public class FreeTTSAdapter implements TextToSpeechAPI{
 		voice.speak(text);
 	}
 
+	//convert all ints from 0-100 range to float 0.0-1.0
 	@Override
 	public void setVolume(int volume) {
-		voice.setVolume(volume);
+		float vol = (float)volume/(float)100;
+		voice.setVolume(vol);
 	}
 
 	@Override
 	public void setRate(int rate) {
-		voice.setRate(rate);
+		float rat = (float)rate/(float)100;
+		voice.setRate(rat);
 	}
 
 	@Override
 	public void setPitch(int pitch) {
-		voice.setPitch(pitch);
+		float pit = (float)pitch/(float)100;
+		voice.setPitch(pit);
 	}
 }
