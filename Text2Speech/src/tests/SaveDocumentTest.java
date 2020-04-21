@@ -38,7 +38,7 @@ public class SaveDocumentTest {
 		
 		//initiate saveDocument functionality
 		//Please note that you need to save to D:\test.txt in order for test case to have the right path
-		SaveDocument saveDoc = new SaveDocument(null,testDoc, 1);
+		SaveDocument saveDoc = new SaveDocument(testDoc, 1);
 		saveDoc.actionPerformed(null);
 		
 		//take the output and save it as string
@@ -55,7 +55,7 @@ public class SaveDocumentTest {
 		if(data.equals("Author: John\r\n" + "Title: Title1\r\n" + "Creation Date: " + LocalDate.now().toString() + "\r\n" + "Saved Date: " + LocalDate.now().toString() + "\r\n" + "This is \r\n" + "test \r\n")) {
 			System.out.println("SaveDocument passed successfully");
 		} else {
-			fail("Saved document incorrectly");
+			fail("SaveDocument test failed");
 		}
 	}
 

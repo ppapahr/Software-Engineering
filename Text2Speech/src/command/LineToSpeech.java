@@ -14,7 +14,9 @@ public class LineToSpeech implements ActionListener{
 	private Document curDocument;
 	private int chosenFunc;
 	private JTextArea textArea;
+	
 	/*
+	  chosenFunc can be one of the following numbers:
 	  1 --> playDocument
 	  2 --> playReverseDocument
 	  3 --> playLine
@@ -43,6 +45,10 @@ public class LineToSpeech implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if(curDocument.getContents().size() == 0) {
+			System.out.println("Nothing to read");
+			return;
+		}
 		
 		if(chosenFunc == 1) {
 			System.out.println("Playing document");

@@ -11,28 +11,26 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import model.Document; 
 
 public class SaveDocument implements ActionListener {
-	
-	
-	private JTextArea textArea;
-	
+
 	private Document curDocument;
-	
 	private int TEST_FLAG;
 	
-	public SaveDocument(JTextArea textArea, Document curDocument) {
-		this.textArea = textArea;
+	public SaveDocument(Document curDocument) {
 		this.curDocument = curDocument;
 		this.TEST_FLAG = 0;
 	}
 	
-	public SaveDocument(JTextArea textArea, Document curDocument, int TEST_FLAG) {
-		this.textArea = textArea;
+	public SaveDocument(Document curDocument, int TEST_FLAG) {
 		this.curDocument = curDocument;
 		this.TEST_FLAG = TEST_FLAG;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		//check if document has been created first so that saveDocument doesn't return error
+		if(curDocument.getCreationDate() == null) {
+			return;
+		}
 		//set savedDate in document
 		curDocument.setSavedDate(LocalDate.now());
 		
