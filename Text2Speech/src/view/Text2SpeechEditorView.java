@@ -72,7 +72,23 @@ public class Text2SpeechEditorView {
 		JMenuItem mntmNewMenuItem_0 = new JMenuItem("Edit");
 		mnNewMenu.add(mntmNewMenuItem_0);
 		mntmNewMenuItem_0.addActionListener(commandFactory.createCommand("Edit"));
-
+		
+		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Play document");
+		mnNewMenu.add(mntmNewMenuItem_3);
+		mntmNewMenuItem_3.addActionListener(commandFactory.createCommand("Play document"));
+		
+		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Play line");
+		mnNewMenu.add(mntmNewMenuItem_4);
+		mntmNewMenuItem_4.addActionListener(commandFactory.createCommand("Play line"));
+		
+		JMenuItem mntmNewMenuItem_5 = new JMenuItem("Play reverse document");
+		mnNewMenu.add(mntmNewMenuItem_5);
+		mntmNewMenuItem_5.addActionListener(commandFactory.createCommand("Play reverse document"));
+		
+		JMenuItem mntmNewMenuItem_6 = new JMenuItem("Play reverse line");
+		mnNewMenu.add(mntmNewMenuItem_6);
+		mntmNewMenuItem_6.addActionListener(commandFactory.createCommand("Play reverse line"));
+		
 		//Add scroll pane to the frame
 		JScrollPane scrollPane = new JScrollPane();
 		frame.getContentPane().add(scrollPane, BorderLayout.CENTER);

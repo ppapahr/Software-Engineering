@@ -21,6 +21,11 @@ public class CommandFactory {
 	private SaveDocument saveDocument;
 	private OpenDocument openDocument;
 	private EditDocument editDocument;
+	
+	private LineToSpeech playContents;
+	private LineToSpeech playReverseContents;
+	private LineToSpeech playLine;
+	private LineToSpeech playReverseLine;
 
 	public CommandFactory(JTextArea textArea, JFrame frame, Document curDocument) {
 		//GUI Components
@@ -33,6 +38,11 @@ public class CommandFactory {
 		saveDocument = new SaveDocument(textArea, curDocument);
 		openDocument = new OpenDocument(textArea, frame, curDocument);
 		editDocument = new EditDocument(textArea, curDocument);
+		
+		playContents = new LineToSpeech(textArea, curDocument, 1);
+		playReverseContents = new LineToSpeech(textArea, curDocument, 2);
+		playLine = new LineToSpeech(textArea, curDocument, 3);
+		playReverseLine = new LineToSpeech(textArea, curDocument, 4);
 	}
 
 	public ActionListener createCommand(String s) {
@@ -47,6 +57,18 @@ public class CommandFactory {
 		}
 		else if(s.equals("Edit")) {
 			return editDocument;
+		}
+		else if(s.equals("Play document")) {
+			return playContents;
+		}
+		else if(s.equals("Play reverse document")) {
+			return playReverseContents;
+		}
+		else if(s.equals("Play line")) {
+			return playLine;
+		}
+		else if(s.equals("Play reverse line")) {
+			return playReverseLine;
 		}
 		//add other commands
 		return temp;

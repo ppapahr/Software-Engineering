@@ -75,16 +75,14 @@ public class Document {
 	public void playLine(int num) {
 
 	}
+	
+	public void playReverseLine(int num) {
+
+	}
 
 	//Encoding functions
 
 	public void playEncodedContents() {
-
-	}
-
-
-
-	public void playReverseLine(int num) {
 
 	}
 
