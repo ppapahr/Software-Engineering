@@ -65,15 +65,63 @@ public class Document {
 
 	//Text2speech functions
 	public void playContents() {
-
+		TextToSpeechAPIFactory fact = new TextToSpeechAPIFactory();
+		TextToSpeechAPI adapter = fact.createTTSAPI("real");
+		//TextToSpeechAPI adapter = (TextToSpeechAPI) fact;
+		
+		//convert contents into a string
+		StringBuilder contentStringBuilder = new StringBuilder();
+		for (int k=0; k<contents.size(); k++) {
+			for (String s : contents.get(k).getWords()) 
+			{
+				if(s.length() == 0){
+					contentStringBuilder.append(" ");
+				}
+				else {
+					contentStringBuilder.append(s);
+				}
+			}
+			contentStringBuilder.append("\n");
+		}
+		adapter.play(contentStringBuilder.toString());
 	}
 
 	public void playReverseContents() {
-
+		TextToSpeechAPIFactory fact = new TextToSpeechAPIFactory();
+		TextToSpeechAPI adapter = fact.createTTSAPI("real");
+		
+		//convert contents into a string
+		StringBuilder contentStringBuilder = new StringBuilder();
+		for (int k=0; k<contents.size(); k++) {
+			for (String s : contents.get(k).getWords()) 
+			{
+				if(s.length() == 0){
+					contentStringBuilder.append(" ");
+				}
+				else {
+					contentStringBuilder.append(s);
+				}
+			}
+			contentStringBuilder.append("\n");
+		}
+		
+		//reverse the string
+		String string = "";
+	    String[] words = contentStringBuilder.toString().split("\\n");
+	    for (int j = 0; j < words.length; j++) {
+		    String temp[] = words[j].toString().split(" ");
+		    for (int k = 0; k < temp.length; k++) {
+		    	string = temp[k] + " " + string;
+		    }
+	    }
+	   adapter.play(string);
+	    
 	}
 
 	public void playLine(int num) {
-
+		//Line lineVoice = new Line(contents.get(num));
+		System.out.println(contents.get(1));
+		
 	}
 	
 	public void playReverseLine(int num) {
@@ -81,7 +129,6 @@ public class Document {
 	}
 
 	//Encoding functions
-
 	public void playEncodedContents() {
 
 	}

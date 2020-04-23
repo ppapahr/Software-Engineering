@@ -52,16 +52,16 @@ public class LineToSpeech implements ActionListener{
 		
 		if(chosenFunc == 1) {
 			System.out.println("Playing document");
-			//curDocument.playContents();
+			curDocument.playContents();
 		} else if(chosenFunc == 2) {
 			System.out.println("Playing reverse document");
-			//curDocument.playReverseContents();
+			curDocument.playReverseContents();
 		} else if(chosenFunc == 3) {
 			System.out.println("Playing line" + " " + this.getRowNumber());
-			//curDocument.playLine(this.getRowNumber());
+			curDocument.playLine(this.getRowNumber());
 		} else if(chosenFunc == 4){
 			System.out.println("Playing reverse line" + " " + this.getRowNumber());
-			//curDocument.playReverseLine(this.getRowNumber());
+			curDocument.playReverseLine(this.getRowNumber());
 		}
 		
 	}
