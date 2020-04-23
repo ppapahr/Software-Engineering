@@ -120,7 +120,7 @@ public class Document {
 
 	public void playLine(int num) {
 		//Line lineVoice = new Line(contents.get(num));
-		System.out.println(contents.get(1));
+		System.out.println(contents.get(1).getWords());
 		
 	}
 	
