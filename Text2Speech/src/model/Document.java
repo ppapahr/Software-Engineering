@@ -2,6 +2,8 @@ package model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import encodingstrategies.*;
 import text2speechapis.*;
 
@@ -119,13 +121,33 @@ public class Document {
 	}
 
 	public void playLine(int num) {
-		//Line lineVoice = new Line(contents.get(num));
-		System.out.println(contents.get(1).getWords());
-		
+		Line lineVoice = new Line(contents.get(num-1).getWords());
+		lineVoice.playLine();
 	}
 	
 	public void playReverseLine(int num) {
-
+		String temp = "";
+		String reverceLine = "";
+	    for (int j = 0; j < contents.get(num-1).getWords().size(); j++) {
+	    	if(contents.get(num-1).getWords().get(j).length() == 0) {
+	    		temp += " ";
+	    	}
+	    	else{
+	    		temp += contents.get(num-1).getWords().get(j);
+	    	}
+	    }
+	    
+	    String[] words = temp.split("\\n");
+	    for (int j = 0; j < words.length; j++) {
+		    String temp2[] = words[j].toString().split(" ");
+		    for (int k = 0; k < temp2.length; k++) {
+		    	reverceLine = temp2[k] + " " + reverceLine;
+		    }
+	    }
+	    
+	    ArrayList<String> reverceLineArray = new ArrayList<String>(Arrays.asList(reverceLine.split(" ")));
+		Line lineVoice = new Line(reverceLineArray);
+		lineVoice.playReverseLine();
 	}
 
 	//Encoding functions
