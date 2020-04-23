@@ -121,12 +121,25 @@ public class Document {
 	}
 
 	public void playLine(int num) {
-		//call Line with the correct line text
-		Line lineVoice = new Line(contents.get(num-1).getWords());
-		lineVoice.playLine();
+		//check if the row num returned from LineToSpeech is within limits and then if the row is empty
+		if(num <= contents.size()){
+			if(!contents.get(num-1).getWords().isEmpty()) {
+				//call Line with the correct line text
+				Line lineVoice = new Line(contents.get(num-1).getWords());
+				lineVoice.playLine();
+			}
+		}
 	}
 	
 	public void playReverseLine(int num) {
+		//check if the row num returned from LineToSpeech is within limits and then if the row is empty
+		if(num >= contents.size()){
+			return;
+		}	
+		if(contents.get(num-1).getWords().isEmpty()) {
+				return;
+		}
+		
 		//create string for reverse process 
 		String temp = "";
 		String reverceLine = "";
