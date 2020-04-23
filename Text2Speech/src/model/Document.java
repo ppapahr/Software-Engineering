@@ -121,11 +121,13 @@ public class Document {
 	}
 
 	public void playLine(int num) {
+		//call Line with the correct line text
 		Line lineVoice = new Line(contents.get(num-1).getWords());
 		lineVoice.playLine();
 	}
 	
 	public void playReverseLine(int num) {
+		//create string for reverse process 
 		String temp = "";
 		String reverceLine = "";
 	    for (int j = 0; j < contents.get(num-1).getWords().size(); j++) {
@@ -137,6 +139,7 @@ public class Document {
 	    	}
 	    }
 	    
+	    //reverse the Line string
 	    String[] words = temp.split("\\n");
 	    for (int j = 0; j < words.length; j++) {
 		    String temp2[] = words[j].toString().split(" ");
@@ -145,7 +148,10 @@ public class Document {
 		    }
 	    }
 	    
+	    //create arraylist from string for Line constructor
 	    ArrayList<String> reverceLineArray = new ArrayList<String>(Arrays.asList(reverceLine.split(" ")));
+	    
+	    //call Line with the correct line text
 		Line lineVoice = new Line(reverceLineArray);
 		lineVoice.playReverseLine();
 	}
