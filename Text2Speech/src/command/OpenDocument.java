@@ -97,6 +97,9 @@ public class OpenDocument implements ActionListener{
 				//stringBuilder for testing
 				StringBuilder tsb = new StringBuilder();
 				
+				//empty contents from before
+				contents = new ArrayList<Line>();
+				
 				//load StringBuilder and Line class with the rest of the file
 				while(input.hasNext()) {
 					String nextLine = input.nextLine();
