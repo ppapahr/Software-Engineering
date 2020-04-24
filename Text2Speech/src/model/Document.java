@@ -117,23 +117,35 @@ public class Document {
 	}
 
 	public void playLine(int num) {
-		//call Line with the correct line text
-		Line lineVoice = new Line(contents.get(num-1).getWords());
-		lineVoice.playLine();
+		//check if the row num returned from LineToSpeech is within limits and then if the row is empty
+		if(num <= contents.size()){
+			if(!contents.get(num-1).getWords().isEmpty()) {
+				//call Line with the correct line text
+				Line lineVoice = new Line(contents.get(num-1).getWords());
+				lineVoice.playLine();
+			}
+		}
 	}
 	
 	public void playReverseLine(int num) {
+		//check if the row num returned from LineToSpeech is within limits and then if the row is empty
+		if(num >= contents.size()){
+			return;
+		}	
+		if(contents.get(num-1).getWords().isEmpty()) {
+			return;
+		}
+		
 		if(num <= contents.size()) {
 			//create string for reverse process 		    
 		    String reverceLine = "";
 		    for(int i=0; i<contents.get(num-1).getWords().size(); i++) { 
 		    	reverceLine = contents.get(num-1).getWords().get(i) + " " + reverceLine; 
 		    }
-		    
 		    //create arraylist from string for Line constructor
-		    ArrayList<String> reverceLineArray = new ArrayList<String>(Arrays.asList(reverceLine.split(" ")));
-		    
-		    //call Line with the correct line text
+			ArrayList<String> reverceLineArray = new ArrayList<String>(Arrays.asList(reverceLine.split(" ")));
+			    
+			//call Line with the correct line text
 			Line lineVoice = new Line(reverceLineArray);
 			lineVoice.playReverseLine();
 		}
