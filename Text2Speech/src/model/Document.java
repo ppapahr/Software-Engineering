@@ -128,14 +128,7 @@ public class Document {
 	}
 	
 	public void playReverseLine(int num) {
-		//check if the row num returned from LineToSpeech is within limits and then if the row is empty
-		if(num >= contents.size()){
-			return;
-		}	
-		if(contents.get(num-1).getWords().isEmpty()) {
-			return;
-		}
-		
+		//check if the row num returned from LineToSpeech is within limits
 		if(num <= contents.size()) {
 			//create string for reverse process 		    
 		    String reverceLine = "";
