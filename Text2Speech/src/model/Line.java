@@ -51,16 +51,11 @@ public class Line {
 		TextToSpeechAPI adapter = fact.createTTSAPI("real");
 		
 		//create string from arraylist
-		String voice = "";
-		for (int j = 0; j < words.size(); j++) {
-			if(words.get(j).length() == 0){
-				voice = voice + " ";
-			}
-			else {
-				voice = voice + words.get(j);
-			}
+		String voice = words.get(0);
+		for (int j = 1; j < words.size(); j++) {
+				voice = voice + " " + words.get(j);
 		}
-		
+
 		//play text
 		adapter.play(voice);
 	}

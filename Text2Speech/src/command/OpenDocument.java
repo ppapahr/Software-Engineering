@@ -107,7 +107,7 @@ public class OpenDocument implements ActionListener{
 	            	tsb.append("\n");
 	            	
 	            	//split line in words and append them in an arraylist
-	            	ArrayList<String> words = new ArrayList<String>(Arrays.asList(tsb.toString().split("\\s*")));
+	            	ArrayList<String> words = new ArrayList<String>(Arrays.asList(tsb.toString().split("\\s")));
 	            	Line curLine = new Line(words, null, null);
 	            	
 	            	//add word arraylist in Document's content

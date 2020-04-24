@@ -93,29 +93,25 @@ public class Document {
 		TextToSpeechAPI adapter = fact.createTTSAPI("real");
 		
 		//convert contents into a string
-		StringBuilder contentStringBuilder = new StringBuilder();
+		String contentString = new String();
 		for (int k=0; k<contents.size(); k++) {
 			for (String s : contents.get(k).getWords()) 
 			{
-				if(s.length() == 0){
-					contentStringBuilder.append(" ");
-				}
-				else {
-					contentStringBuilder.append(s);
-				}
+				contentString += " " + s;
 			}
-			contentStringBuilder.append("\n");
+			contentString += "\n";
 		}
 		
 		//reverse the string
 		String string = "";
-	    String[] words = contentStringBuilder.toString().split("\\n");
+	    String[] words = contentString.toString().split("\\n");
 	    for (int j = 0; j < words.length; j++) {
 		    String temp[] = words[j].toString().split(" ");
 		    for (int k = 0; k < temp.length; k++) {
 		    	string = temp[k] + " " + string;
 		    }
 	    }
+	   
 	   adapter.play(string);
 	    
 	}
@@ -127,33 +123,20 @@ public class Document {
 	}
 	
 	public void playReverseLine(int num) {
-		//create string for reverse process 
-		String temp = "";
-		String reverceLine = "";
-	    for (int j = 0; j < contents.get(num-1).getWords().size(); j++) {
-	    	if(contents.get(num-1).getWords().get(j).length() == 0) {
-	    		temp += " ";
-	    	}
-	    	else{
-	    		temp += contents.get(num-1).getWords().get(j);
-	    	}
-	    }
-	    
-	    //reverse the Line string
-	    String[] words = temp.split("\\n");
-	    for (int j = 0; j < words.length; j++) {
-		    String temp2[] = words[j].toString().split(" ");
-		    for (int k = 0; k < temp2.length; k++) {
-		    	reverceLine = temp2[k] + " " + reverceLine;
+		if(num <= contents.size()) {
+			//create string for reverse process 		    
+		    String reverceLine = "";
+		    for(int i=0; i<contents.get(num-1).getWords().size(); i++) { 
+		    	reverceLine = contents.get(num-1).getWords().get(i) + " " + reverceLine; 
 		    }
-	    }
-	    
-	    //create arraylist from string for Line constructor
-	    ArrayList<String> reverceLineArray = new ArrayList<String>(Arrays.asList(reverceLine.split(" ")));
-	    
-	    //call Line with the correct line text
-		Line lineVoice = new Line(reverceLineArray);
-		lineVoice.playReverseLine();
+		    
+		    //create arraylist from string for Line constructor
+		    ArrayList<String> reverceLineArray = new ArrayList<String>(Arrays.asList(reverceLine.split(" ")));
+		    
+		    //call Line with the correct line text
+			Line lineVoice = new Line(reverceLineArray);
+			lineVoice.playReverseLine();
+		}
 	}
 
 	//Encoding functions
