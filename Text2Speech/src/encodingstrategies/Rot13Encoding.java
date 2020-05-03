@@ -6,11 +6,6 @@ public class Rot13Encoding extends TemplateEncoding{
 		
 	}
 
-	@Override
-	public String encode(String s) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public char mapCharacter(char c) {

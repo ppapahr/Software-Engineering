@@ -7,7 +7,12 @@ public abstract class TemplateEncoding implements EncodingStrategy {
 	}
 	
 	public String encode(String s) {
-		return null;
+		char[] charArray = s.toCharArray();
+		for(int i=0; i<charArray.length; i++) {
+			charArray[i] = this.mapCharacter(charArray[i]);
+		}
+		String encodedS = new String(charArray);
+		return encodedS;
 	}
 	
 	public abstract char mapCharacter(char c);
