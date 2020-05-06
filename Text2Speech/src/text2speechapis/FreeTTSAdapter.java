@@ -31,13 +31,12 @@ public class FreeTTSAdapter implements TextToSpeechAPI{
 
 	@Override
 	public void setRate(int rate) {
-		float rat = (float)rate/(float)100;
-		voice.setRate(rat);
+		//set rate 1 to 1000
+		voice.setRate(rate);
 	}
 
 	@Override
 	public void setPitch(int pitch) {
-		float pit = (float)pitch/(float)100;
-		voice.setPitch(pit);
+		voice.setPitch(pitch);
 	}
 }
