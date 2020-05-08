@@ -122,7 +122,7 @@ public class Document {
 		if(num <= contents.size()){
 			if(!contents.get(num-1).getWords().isEmpty()) {
 				//call Line with the correct line text
-				Line lineVoice = new Line(contents.get(num-1).getWords());
+				Line lineVoice = new Line(contents.get(num-1).getWords(),audioManager);
 				lineVoice.playLine();
 			}
 		}
@@ -140,7 +140,7 @@ public class Document {
 			ArrayList<String> reverceLineArray = new ArrayList<String>(Arrays.asList(reverceLine.split(" ")));
 			    
 			//call Line with the correct line text
-			Line lineVoice = new Line(reverceLineArray);
+			Line lineVoice = new Line(reverceLineArray, audioManager);
 			lineVoice.playReverseLine();
 		}
 	}
@@ -169,7 +169,7 @@ public class Document {
 		if(num <= contents.size()){
 			if(!contents.get(num-1).getWords().isEmpty()) {
 				//call Line with the correct line text
-				Line lineVoice = new Line(contents.get(num-1).getWords());
+				Line lineVoice = new Line(contents.get(num-1).getWords(),audioManager);
 				lineVoice.playLine();
 			}
 		}

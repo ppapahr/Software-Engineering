@@ -20,6 +20,10 @@ public class Line {
 		TextToSpeechAPIFactory fact = new TextToSpeechAPIFactory();
 		audioManager = fact.createTTSAPI("real");
 	}
+	public Line(ArrayList<String> words, TextToSpeechAPI audioManager) {
+		this.words = words;
+		this.audioManager = audioManager;
+	}
 	
 	//getters
 	
@@ -46,9 +50,6 @@ public class Line {
 	}
 	
 	public void playReverseLine() {
-		TextToSpeechAPIFactory fact = new TextToSpeechAPIFactory();
-		audioManager = fact.createTTSAPI("real");
-		
 		//create string from arraylist
 		String voice = words.get(0);
 		for (int j = 1; j < words.size(); j++) {
