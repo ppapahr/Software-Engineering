@@ -36,6 +36,8 @@ public class Text2SpeechEditorView {
 	private JFrame frame;
 	JTextArea textArea = new JTextArea();
 
+
+	
 	//command listeners
 	private static CommandFactory commandFactory;
 	
@@ -56,8 +58,17 @@ public class Text2SpeechEditorView {
 		//Initialize Document
 		curDocument = new Document();
 		
+		//initialize sliders
+		JSlider rateSlider = new JSlider(0,1000,150);
+		JSlider soundSlider = new JSlider(0,100,50);
+		//pitch spinner
+		JLabel spinnerText = new JLabel("<html>Pitch <br/>Level </html>", SwingConstants.CENTER);
+		spinnerText.setSize(10, 10);
+		SpinnerModel model = new SpinnerNumberModel(100, 0, 500, 1);     
+		JSpinner spinner = new JSpinner(model);
+		
 	    //initialize command factory
-	    commandFactory = new CommandFactory(textArea, frame, curDocument);
+	    commandFactory = new CommandFactory(textArea, frame, curDocument,soundSlider,rateSlider,spinner);
 	    
 		//initialize toolbars
 		JToolBar toolBar = new JToolBar();
@@ -72,7 +83,6 @@ public class Text2SpeechEditorView {
 		toolBar.add(menuBar);
 
 		//add sliders
-		JSlider soundSlider = new JSlider(0,100,50);
 		soundSlider.setMajorTickSpacing(25);
 		soundSlider.setPaintTicks(true);
 		
@@ -87,7 +97,6 @@ public class Text2SpeechEditorView {
 		// Set the label to be drawn
 		soundSlider.setLabelTable(position);
 		
-		JSlider rateSlider = new JSlider(0,1000,150);
 		rateSlider.setMajorTickSpacing(100);
 		rateSlider.setPaintTicks(true);
 		rateSlider.setPaintLabels(true);
@@ -99,31 +108,28 @@ public class Text2SpeechEditorView {
 		         
 		rateSlider.setLabelTable(position2);
 		
-		//pitch spinner
-		JLabel spinnerText = new JLabel("<html>Pitch <br/>Level </html>", SwingConstants.CENTER);
-		spinnerText.setSize(10, 10);
-		SpinnerModel model = new SpinnerNumberModel(100, 0, 500, 1);     
-		JSpinner spinner = new JSpinner(model);
-
 		//sound save button
 		JButton saveSound = new JButton(new ImageIcon("img/soundsave.png"));
 		saveSound.setToolTipText("Save sound settings.");
-
 
 		//add soundToolbar components
 		soundToolBar.add(soundSlider);
 		soundToolBar.add(rateSlider);
 		soundToolBar.add(spinnerText);
 		soundToolBar.add(spinner);
+		
+		//send sound settings to command
+		
+		saveSound.addActionListener(commandFactory.createCommand("TuneAudio"));
 		soundToolBar.add(saveSound);
 
-		
+				
 		//Add menus
 		JMenu mnNewMenu = new JMenu("File");
 		JMenu mnPlayMenu = new JMenu("Play");
 		JMenu mnEncodeMenu = new JMenu("Encode");
 
-
+		
 		menuBar.add(mnNewMenu);
 		menuBar.add(mnPlayMenu);
 		menuBar.add(mnEncodeMenu);

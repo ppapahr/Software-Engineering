@@ -12,6 +12,9 @@ public class CommandFactory {
 	//constructor passed objects
 	JTextArea textArea;
 	JFrame frame;
+	JSlider volumeSlider;
+	JSlider rateSlider;
+	JSpinner pitchSpinner;
 	//document object carried over from view
 	Document curDocument;
 	//commands
@@ -27,63 +30,69 @@ public class CommandFactory {
 	private LineToSpeech playLine;
 	private LineToSpeech playReverseLine;
 	
-	private TuneEncoding Rot13;
-	private TuneEncoding AtBash;
+	private TuneEncoding rot13;
+	private TuneEncoding atBash;
 	
+	private TuneAudio tuneAudio;
 
-	public CommandFactory(JTextArea textArea, JFrame frame, Document curDocument) {
+	public CommandFactory(JTextArea textArea, JFrame frame, Document curDocument, JSlider volumeSlider, JSlider rateSlider, JSpinner pitchSpinner) {
 		//GUI Components
 		this.textArea = textArea;
 		this.frame = frame;
+		this.volumeSlider = volumeSlider;
+		this.rateSlider = rateSlider;
+		this.pitchSpinner = pitchSpinner;
 		//Document
 		this.curDocument = curDocument;
-		//initialize commands
-		newDocument = new NewDocument(textArea, frame, curDocument);
-		saveDocument = new SaveDocument(curDocument);
-		openDocument = new OpenDocument(textArea, frame, curDocument);
-		editDocument = new EditDocument(textArea, curDocument);
-		
-		playContents = new LineToSpeech(textArea, curDocument, 1);
-		playReverseContents = new LineToSpeech(textArea, curDocument, 2);
-		playLine = new LineToSpeech(textArea, curDocument, 3);
-		playReverseLine = new LineToSpeech(textArea, curDocument, 4);
-		
-		AtBash = new TuneEncoding(curDocument, 1);
-		Rot13 = new TuneEncoding(curDocument, 2);
-		
+		//Sound related GUI
 		
 	}
 
 	public ActionListener createCommand(String s) {
 		ActionListener temp = null;
 		if(s.equals("New")) {
+			newDocument = new NewDocument(textArea, frame, curDocument);
+			//can be added to arraylist here
 			return newDocument;
 		} else if(s.equals("Save")) {
+			saveDocument = new SaveDocument(curDocument);
 			return saveDocument;
 		}
 		else if(s.equals("Open...")) {
+			openDocument = new OpenDocument(textArea, frame, curDocument);
 			return openDocument;
 		}
 		else if(s.equals("Edit")) {
+			editDocument = new EditDocument(textArea, curDocument);
 			return editDocument;
 		}
 		else if(s.equals("Play document")) {
+			playContents = new LineToSpeech(textArea, curDocument, 1);
 			return playContents;
 		}
 		else if(s.equals("Play reverse document")) {
+			playReverseContents = new LineToSpeech(textArea, curDocument, 2);
 			return playReverseContents;
 		}
 		else if(s.equals("Play line")) {
+			playLine = new LineToSpeech(textArea, curDocument, 3);
 			return playLine;
 		}
 		else if(s.equals("Play reverse line")) {
+			playReverseLine = new LineToSpeech(textArea, curDocument, 4);
 			return playReverseLine;
 		}
 		else if(s.equals("Rot13")) {
-			return Rot13;
+			rot13 = new TuneEncoding(curDocument, 2);
+			return rot13;
 		}
 		else if(s.equals("AtBash")) {
-			return AtBash;
+			atBash = new TuneEncoding(curDocument, 1);
+			return atBash;
+		}
+		else if(s.equals("TuneAudio")) {
+			tuneAudio = new TuneAudio(curDocument, volumeSlider, rateSlider, pitchSpinner);
+			return tuneAudio;
 		}
 		//add other commands
 		return temp;

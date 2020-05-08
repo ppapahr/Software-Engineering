@@ -19,6 +19,8 @@ public class Document {
 
 	public Document() {
 		this.contents = new ArrayList<Line>();
+		TextToSpeechAPIFactory fact = new TextToSpeechAPIFactory();
+		audioManager = fact.createTTSAPI("real");
 	}
 
 	//setters
@@ -67,8 +69,7 @@ public class Document {
 
 	//Text2speech functions
 	public void playContents() {
-		TextToSpeechAPIFactory fact = new TextToSpeechAPIFactory();
-		audioManager = fact.createTTSAPI("real");
+
 		//TextToSpeechAPI adapter = (TextToSpeechAPI) fact;
 		
 		//convert contents into a string
@@ -155,5 +156,11 @@ public class Document {
 
 	public void tuneEncodingStrategy(EncodingStrategy encodingStrategy) {
 		this.encodingStrategy = encodingStrategy;
+	}
+	
+	public void tuneAudioSettings(int volume, int rate, int pitch) {
+		audioManager.setVolume(volume);
+		audioManager.setRate(rate);
+		audioManager.setPitch(pitch);
 	}
 }
