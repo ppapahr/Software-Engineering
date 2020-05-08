@@ -164,6 +164,15 @@ public class Text2SpeechEditorView {
 		mnPlayMenu.add(mntmNewMenuItem_6);
 		mntmNewMenuItem_6.addActionListener(commandFactory.createCommand("Play reverse line"));
 		
+		//encoding related commands
+		JMenuItem mntmNewMenuItem_7 = new JMenuItem("Rot13");
+		mnEncodeMenu.add(mntmNewMenuItem_7);
+		mntmNewMenuItem_7.addActionListener(commandFactory.createCommand("Rot13"));
+		
+		JMenuItem mntmNewMenuItem_8 = new JMenuItem("AtBash");
+		mnEncodeMenu.add(mntmNewMenuItem_8);
+		mntmNewMenuItem_8.addActionListener(commandFactory.createCommand("AtBash"));
+		
 		//Add scroll pane to the frame
 		JScrollPane scrollPane = new JScrollPane();
 		frame.getContentPane().add(scrollPane, BorderLayout.CENTER);

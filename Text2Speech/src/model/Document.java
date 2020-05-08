@@ -68,7 +68,7 @@ public class Document {
 	//Text2speech functions
 	public void playContents() {
 		TextToSpeechAPIFactory fact = new TextToSpeechAPIFactory();
-		TextToSpeechAPI adapter = fact.createTTSAPI("real");
+		audioManager = fact.createTTSAPI("real");
 		//TextToSpeechAPI adapter = (TextToSpeechAPI) fact;
 		
 		//convert contents into a string
@@ -85,12 +85,12 @@ public class Document {
 			}
 			contentStringBuilder.append("\n");
 		}
-		adapter.play(contentStringBuilder.toString());
+		audioManager.play(contentStringBuilder.toString());
 	}
 
 	public void playReverseContents() {
 		TextToSpeechAPIFactory fact = new TextToSpeechAPIFactory();
-		TextToSpeechAPI adapter = fact.createTTSAPI("real");
+		audioManager = fact.createTTSAPI("real");
 		
 		//convert contents into a string
 		String contentString = new String();
@@ -112,7 +112,7 @@ public class Document {
 		    }
 	    }
 	   
-	   adapter.play(string);
+	   audioManager.play(string);
 	    
 	}
 

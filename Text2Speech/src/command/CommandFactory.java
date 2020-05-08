@@ -26,6 +26,10 @@ public class CommandFactory {
 	private LineToSpeech playReverseContents;
 	private LineToSpeech playLine;
 	private LineToSpeech playReverseLine;
+	
+	private TuneEncoding Rot13;
+	private TuneEncoding AtBash;
+	
 
 	public CommandFactory(JTextArea textArea, JFrame frame, Document curDocument) {
 		//GUI Components
@@ -43,6 +47,11 @@ public class CommandFactory {
 		playReverseContents = new LineToSpeech(textArea, curDocument, 2);
 		playLine = new LineToSpeech(textArea, curDocument, 3);
 		playReverseLine = new LineToSpeech(textArea, curDocument, 4);
+		
+		AtBash = new TuneEncoding(curDocument, 1);
+		Rot13 = new TuneEncoding(curDocument, 2);
+		
+		
 	}
 
 	public ActionListener createCommand(String s) {
@@ -69,6 +78,12 @@ public class CommandFactory {
 		}
 		else if(s.equals("Play reverse line")) {
 			return playReverseLine;
+		}
+		else if(s.equals("Rot13")) {
+			return Rot13;
+		}
+		else if(s.equals("AtBash")) {
+			return AtBash;
 		}
 		//add other commands
 		return temp;

@@ -29,7 +29,7 @@ public class Line {
 	
 	public void playLine() {
 		TextToSpeechAPIFactory fact = new TextToSpeechAPIFactory();
-		TextToSpeechAPI adapter = fact.createTTSAPI("real");
+		audioManager = fact.createTTSAPI("real");
 		
 		//create string from arraylist
 		String voice = "";
@@ -43,12 +43,12 @@ public class Line {
 		}
 		
 		//play text
-		adapter.play(voice);
+		audioManager.play(voice);
 	}
 	
 	public void playReverseLine() {
 		TextToSpeechAPIFactory fact = new TextToSpeechAPIFactory();
-		TextToSpeechAPI adapter = fact.createTTSAPI("real");
+		audioManager = fact.createTTSAPI("real");
 		
 		//create string from arraylist
 		String voice = words.get(0);
@@ -57,7 +57,7 @@ public class Line {
 		}
 
 		//play text
-		adapter.play(voice);
+		audioManager.play(voice);
 	}
 	
 	
