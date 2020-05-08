@@ -132,15 +132,15 @@ public class Document {
 		//check if the row num returned from LineToSpeech is within limits
 		if(num <= contents.size()) {
 			//create string for reverse process 		    
-		    String reverceLine = "";
+		    String reverseLine = "";
 		    for(int i=0; i<contents.get(num-1).getWords().size(); i++) { 
-		    	reverceLine = contents.get(num-1).getWords().get(i) + " " + reverceLine; 
+		    	reverseLine = contents.get(num-1).getWords().get(i) + " " + reverseLine;
 		    }
 		    //create arraylist from string for Line constructor
-			ArrayList<String> reverceLineArray = new ArrayList<String>(Arrays.asList(reverceLine.split(" ")));
+			ArrayList<String> reverseLineArray = new ArrayList<String>(Arrays.asList(reverseLine.split(" ")));
 			    
 			//call Line with the correct line text
-			Line lineVoice = new Line(reverceLineArray, audioManager);
+			Line lineVoice = new Line(reverseLineArray, audioManager);
 			lineVoice.playReverseLine();
 		}
 	}

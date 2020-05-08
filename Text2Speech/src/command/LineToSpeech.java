@@ -50,7 +50,6 @@ public class LineToSpeech implements ActionListener{
 		if(curDocument.getContents().size() == 0) {
 			return;
 		}
-		
 		if(chosenFunc == 1) {
 			curDocument.playContents();
 		} else if(chosenFunc == 2) {

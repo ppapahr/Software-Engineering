@@ -76,6 +76,10 @@ public class CommandFactory {
 			playReverseContents = new LineToSpeech(textArea, curDocument, 2);
 			return playReverseContents;
 		}
+		else if(s.equals("Play reverse line")) {
+			playReverseContents = new LineToSpeech(textArea, curDocument, 4);
+			return playReverseContents;
+		}
 		else if(s.equals("Play line")) {
 			playLine = new LineToSpeech(textArea, curDocument, 3);
 			return playLine;

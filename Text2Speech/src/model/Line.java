@@ -60,7 +60,6 @@ public class Line {
 		audioManager.play(voice);
 	}
 	
-	
 	public void playEncodedLine() {
 		//create string from arraylist
 		String voice = "";
