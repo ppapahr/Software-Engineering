@@ -36,9 +36,7 @@ public class Text2SpeechEditorView {
 	private JFrame frame;
 	JTextArea textArea = new JTextArea();
 
-
-	
-	//command listeners
+	//command listener factory
 	private static CommandFactory commandFactory;
 	
 	//Constructor
@@ -119,21 +117,17 @@ public class Text2SpeechEditorView {
 		soundToolBar.add(spinner);
 		
 		//send sound settings to command
-		
 		saveSound.addActionListener(commandFactory.createCommand("TuneAudio"));
 		soundToolBar.add(saveSound);
-
-				
+		
 		//Add menus
 		JMenu mnNewMenu = new JMenu("File");
 		JMenu mnPlayMenu = new JMenu("Play");
 		JMenu mnEncodeMenu = new JMenu("Encode");
-
 		
 		menuBar.add(mnNewMenu);
 		menuBar.add(mnPlayMenu);
 		menuBar.add(mnEncodeMenu);
-
 
 		//Add menu items and actionListeners linking to commands
 		JMenuItem mntmNewMenuItem = new JMenuItem("New");
@@ -151,9 +145,8 @@ public class Text2SpeechEditorView {
 		JMenuItem mntmNewMenuItem_0 = new JMenuItem("Edit");
 		mnNewMenu.add(mntmNewMenuItem_0);
 		mntmNewMenuItem_0.addActionListener(commandFactory.createCommand("Edit"));
-		
-		
-		//audio related sounds
+			
+		//audio related items
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Play document");
 		mnPlayMenu.add(mntmNewMenuItem_3);
 		mntmNewMenuItem_3.addActionListener(commandFactory.createCommand("Play document"));
@@ -190,12 +183,11 @@ public class Text2SpeechEditorView {
 		//Add scroll pane to the frame
 		JScrollPane scrollPane = new JScrollPane();
 		frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
-		//add text area to scrollpane
+		//add text area to scroll pane
 		scrollPane.setViewportView(textArea);
 		
 		textArea.setWrapStyleWord(true);
-		textArea.setLineWrap(true);
-		
+		textArea.setLineWrap(true);	
 	}
 
 	public static void main(String[] args) {
