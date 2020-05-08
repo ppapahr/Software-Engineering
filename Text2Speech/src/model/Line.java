@@ -17,6 +17,8 @@ public class Line {
 	
 	public Line(ArrayList<String> words) {
 		this.words = words;
+		TextToSpeechAPIFactory fact = new TextToSpeechAPIFactory();
+		audioManager = fact.createTTSAPI("real");
 	}
 	
 	//getters
@@ -28,9 +30,6 @@ public class Line {
 	// Text2Speech & Encoding functions
 	
 	public void playLine() {
-		TextToSpeechAPIFactory fact = new TextToSpeechAPIFactory();
-		audioManager = fact.createTTSAPI("real");
-		
 		//create string from arraylist
 		String voice = "";
 		for (int j = 0; j < words.size(); j++) {
@@ -62,7 +61,19 @@ public class Line {
 	
 	
 	public void playEncodedLine() {
-		
+		//create string from arraylist
+		String voice = "";
+		for (int j = 0; j < words.size(); j++) {
+			if(words.get(j).length() == 0){
+				voice = voice + " ";
+			}
+			else {
+				voice = voice + words.get(j);
+			}
+		}
+				
+		//play text
+		audioManager.play(encodingStrategy.encode(voice));
 	}
 	
 	public void tuneEncodingStrategy(EncodingStrategy encodingStrategy) {

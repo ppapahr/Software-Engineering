@@ -29,6 +29,8 @@ public class CommandFactory {
 	private LineToSpeech playReverseContents;
 	private LineToSpeech playLine;
 	private LineToSpeech playReverseLine;
+	private LineToSpeech playEncodedDocument;
+	private LineToSpeech playEncodedLine;
 	
 	private TuneEncoding rot13;
 	private TuneEncoding atBash;
@@ -78,9 +80,13 @@ public class CommandFactory {
 			playLine = new LineToSpeech(textArea, curDocument, 3);
 			return playLine;
 		}
-		else if(s.equals("Play reverse line")) {
-			playReverseLine = new LineToSpeech(textArea, curDocument, 4);
-			return playReverseLine;
+		else if(s.equals("Play encoded document")) {
+			playEncodedDocument = new LineToSpeech(textArea, curDocument, 5);
+			return playEncodedDocument;
+		}
+		else if(s.equals("Play encoded line")) {
+			playEncodedLine = new LineToSpeech(textArea, curDocument, 6);
+			return playEncodedLine;
 		}
 		else if(s.equals("Rot13")) {
 			rot13 = new TuneEncoding(curDocument, 2);

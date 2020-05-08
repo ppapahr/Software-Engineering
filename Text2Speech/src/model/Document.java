@@ -90,8 +90,8 @@ public class Document {
 	}
 
 	public void playReverseContents() {
-		TextToSpeechAPIFactory fact = new TextToSpeechAPIFactory();
-		audioManager = fact.createTTSAPI("real");
+		//TextToSpeechAPIFactory fact = new TextToSpeechAPIFactory();
+		//audioManager = fact.createTTSAPI("real");
 		
 		//convert contents into a string
 		String contentString = new String();
@@ -147,11 +147,32 @@ public class Document {
 
 	//Encoding functions
 	public void playEncodedContents() {
-
+		StringBuilder contentStringBuilder = new StringBuilder();
+		for (int k=0; k<contents.size(); k++) {
+			for (String s : contents.get(k).getWords()) 
+			{
+				if(s.length() == 0){
+					contentStringBuilder.append(" ");
+				}
+				else {
+					contentStringBuilder.append(s);
+				}
+			}
+			contentStringBuilder.append("\n");
+		}
+		//System.out.println(encodingStrategy.encode(contentStringBuilder.toString()));
+		audioManager.play(encodingStrategy.encode(contentStringBuilder.toString()));
 	}
 
 	public void playEncodedLine(int num) {
-
+		//check if the row num returned from LineToSpeech is within limits and then if the row is empty
+		if(num <= contents.size()){
+			if(!contents.get(num-1).getWords().isEmpty()) {
+				//call Line with the correct line text
+				Line lineVoice = new Line(contents.get(num-1).getWords());
+				lineVoice.playLine();
+			}
+		}
 	}
 
 	public void tuneEncodingStrategy(EncodingStrategy encodingStrategy) {

@@ -20,12 +20,15 @@ public class TuneEncoding implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		//check if document exists
 		if(curDocument == null) {
 			System.out.println("No document found");
 			return;
 		}
+		//create encoding strategy factory
 		EncodingStrategy encodingStrategy;
 		StrategiesFactory factory = new StrategiesFactory();
+		//check which encoding has been chosen
 		if(choice == 1) {
 			System.out.println("You chose AtBash");
 			encodingStrategy = factory.createStrategy("atbash");

@@ -170,6 +170,14 @@ public class Text2SpeechEditorView {
 		mnPlayMenu.add(mntmNewMenuItem_6);
 		mntmNewMenuItem_6.addActionListener(commandFactory.createCommand("Play reverse line"));
 		
+		JMenuItem mntmNewMenuItem_9 = new JMenuItem("Play encoded document");
+		mnPlayMenu.add(mntmNewMenuItem_9);
+		mntmNewMenuItem_9.addActionListener(commandFactory.createCommand("Play encoded document"));
+		
+		JMenuItem mntmNewMenuItem_10 = new JMenuItem("Play encoded line");
+		mnPlayMenu.add(mntmNewMenuItem_10);
+		mntmNewMenuItem_10.addActionListener(commandFactory.createCommand("Play encoded line"));
+		
 		//encoding related commands
 		JMenuItem mntmNewMenuItem_7 = new JMenuItem("Rot13");
 		mnEncodeMenu.add(mntmNewMenuItem_7);
