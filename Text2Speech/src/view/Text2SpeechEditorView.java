@@ -4,8 +4,10 @@ import java.awt.EventQueue;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JToolBar;
@@ -25,6 +27,7 @@ import java.awt.Dimension;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JSpinner;
@@ -172,13 +175,18 @@ public class Text2SpeechEditorView {
 		mntmNewMenuItem_10.addActionListener(commandFactory.createCommand("Play encoded line"));
 		
 		//encoding related commands
-		JMenuItem mntmNewMenuItem_7 = new JMenuItem("Rot13");
+		JRadioButtonMenuItem mntmNewMenuItem_7 = new JRadioButtonMenuItem("Rot13", false);
 		mnEncodeMenu.add(mntmNewMenuItem_7);
 		mntmNewMenuItem_7.addActionListener(commandFactory.createCommand("Rot13"));
 		
-		JMenuItem mntmNewMenuItem_8 = new JMenuItem("AtBash");
+		JRadioButtonMenuItem mntmNewMenuItem_8 = new JRadioButtonMenuItem("AtBash", false);
 		mnEncodeMenu.add(mntmNewMenuItem_8);
 		mntmNewMenuItem_8.addActionListener(commandFactory.createCommand("AtBash"));
+		
+		//add buttonmenuitems to group in order for only one to be true at all times
+		ButtonGroup group = new ButtonGroup();
+		group.add(mntmNewMenuItem_8);
+		group.add(mntmNewMenuItem_7);
 		
 		//Add scroll pane to the frame
 		JScrollPane scrollPane = new JScrollPane();
