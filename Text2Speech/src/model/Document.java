@@ -147,6 +147,9 @@ public class Document {
 
 	//Encoding functions
 	public void playEncodedContents() {
+		if(encodingStrategy == null) {
+			return;
+		}
 		StringBuilder contentStringBuilder = new StringBuilder();
 		for (int k=0; k<contents.size(); k++) {
 			for (String s : contents.get(k).getWords()) 
@@ -165,6 +168,9 @@ public class Document {
 	}
 
 	public void playEncodedLine(int num) {
+		if(encodingStrategy == null) {
+			return;
+		}
 		//check if the row num returned from LineToSpeech is within limits and then if the row is empty
 		if(num <= contents.size()){
 			if(!contents.get(num-1).getWords().isEmpty()) {
