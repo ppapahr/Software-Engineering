@@ -60,11 +60,9 @@ public class LineToSpeech implements ActionListener{
 			curDocument.playReverseLine(this.getRowNumber());
 		}
 		else if(chosenFunc == 5) {
-			System.out.println("Playing encoded document");
 			curDocument.playEncodedContents();
 		}
 		else if(chosenFunc == 6) {
-			System.out.println("Playing encoded line");
 			curDocument.playEncodedLine(getRowNumber());
 		}
 		

@@ -30,17 +30,17 @@ public class TuneEncoding implements ActionListener {
 		StrategiesFactory factory = new StrategiesFactory();
 		//check which encoding has been chosen
 		if(choice == 1) {
-			System.out.println("You chose AtBash");
 			encodingStrategy = factory.createStrategy("atbash");
 			curDocument.tuneEncodingStrategy(encodingStrategy);
+			//tune encoding for all the lines in doc
 			for(int i=0; i<curDocument.getContents().size(); i++) {
 				curDocument.getContents().get(i).tuneEncodingStrategy(encodingStrategy);
 			}
 		}
 		else if(choice == 2) {
-			System.out.println("You chose Rot13");
 			encodingStrategy = factory.createStrategy("rot13");
 			curDocument.tuneEncodingStrategy(encodingStrategy);
+			//tune encoding for all the lines in doc
 			for(int i=0; i<curDocument.getContents().size(); i++) {
 				curDocument.getContents().get(i).tuneEncodingStrategy(encodingStrategy);
 			}

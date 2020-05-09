@@ -63,13 +63,9 @@ public class Line {
 	public void playEncodedLine() {
 		//create string from arraylist
 		String voice = "";
-		for (int j = 0; j < words.size(); j++) {
-			if(words.get(j).length() == 0){
-				voice = voice + " ";
-			}
-			else {
-				voice = voice + words.get(j);
-			}
+		for(int i=0; i<words.size(); i++) {
+			voice += words.get(i);
+			voice += " ";
 		}
 				
 		//play text

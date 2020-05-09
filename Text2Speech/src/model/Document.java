@@ -147,6 +147,7 @@ public class Document {
 
 	//Encoding functions
 	public void playEncodedContents() {
+		//if encodingStrategy doesnt exist dont proceed
 		if(encodingStrategy == null) {
 			return;
 		}
@@ -168,6 +169,7 @@ public class Document {
 	}
 
 	public void playEncodedLine(int num) {
+		//if encodingStrategy doesnt exist dont proceed
 		if(encodingStrategy == null) {
 			return;
 		}
@@ -175,8 +177,8 @@ public class Document {
 		if(num <= contents.size()){
 			if(!contents.get(num-1).getWords().isEmpty()) {
 				//call Line with the correct line text
-				Line lineVoice = new Line(contents.get(num-1).getWords(),audioManager);
-				lineVoice.playLine();
+				Line lineVoice = new Line(contents.get(num-1).getWords(),encodingStrategy,audioManager);
+				lineVoice.playEncodedLine();
 			}
 		}
 	}
