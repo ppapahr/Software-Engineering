@@ -6,6 +6,8 @@ public class FakeTextToSpeechAPI implements TextToSpeechAPI{
 	private int rate;
 	private int pitch;
 	
+	private String testOutput;
+	
 	public FakeTextToSpeechAPI(){
 
 	}
@@ -13,6 +15,12 @@ public class FakeTextToSpeechAPI implements TextToSpeechAPI{
 	@Override
 	public void play(String text) {
 		System.out.println(text);
+		testOutput = new String(text);
+	}
+	
+	//getters
+	public String getTestOutput() {
+		return testOutput;
 	}
 	
 	//setters

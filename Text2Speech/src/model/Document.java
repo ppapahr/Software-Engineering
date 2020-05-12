@@ -16,7 +16,7 @@ public class Document {
 	private String title;
 	private LocalDate creationDate;
 	private LocalDate savedDate;
-
+	
 	public Document() {
 		this.contents = new ArrayList<Line>();
 		TextToSpeechAPIFactory fact = new TextToSpeechAPIFactory();
@@ -24,6 +24,10 @@ public class Document {
 	}
 
 	//setters
+	public void setTTSAPI(TextToSpeechAPI adapter) {
+		this.audioManager = adapter;
+	}
+	
 	public void setCreationDate(LocalDate date) {
 		this.creationDate = date;
 	}
