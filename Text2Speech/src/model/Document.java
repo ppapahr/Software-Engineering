@@ -21,6 +21,8 @@ public class Document {
 		this.contents = new ArrayList<Line>();
 		TextToSpeechAPIFactory fact = new TextToSpeechAPIFactory();
 		audioManager = fact.createTTSAPI("real");
+		author = "None";
+		title = "None";
 	}
 
 	//setters
@@ -189,6 +191,10 @@ public class Document {
 
 	public void tuneEncodingStrategy(EncodingStrategy encodingStrategy) {
 		this.encodingStrategy = encodingStrategy;
+	}
+	
+	public String getEncodingStrategy() {
+		return encodingStrategy.toString();
 	}
 	
 	public void tuneAudioSettings(int volume, int rate, int pitch) {

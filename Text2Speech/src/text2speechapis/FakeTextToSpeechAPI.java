@@ -38,4 +38,19 @@ public class FakeTextToSpeechAPI implements TextToSpeechAPI{
 	public void setPitch(int pitch) {
 		this.pitch = pitch;
 	}
+	
+	@Override
+	public int getPitch() {
+		return pitch;
+	}
+	
+	@Override
+	public int getRate() {
+		return rate;
+	}
+	
+	@Override
+	public int getVolume() {
+		return volume;
+	}
 }

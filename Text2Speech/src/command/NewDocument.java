@@ -55,6 +55,8 @@ public class NewDocument implements ActionListener {
 		curDocument.setTitle(title);
 		curDocument.setCreationDate(LocalDate.now());
 		curDocument.getContents().clear();
+		
+		frame.setTitle("Text2Speech Editor" + " Author: " + curDocument.getAuthor() + " Title: " + curDocument.getTitle());
 	}
 	
 

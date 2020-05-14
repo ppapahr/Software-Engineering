@@ -127,6 +127,9 @@ public class OpenDocument implements ActionListener{
 				curDocument.setSavedDate(savedDate);
 				curDocument.setContents(contents);
 				
+				frame.setTitle("Text2Speech Editor" + " Author: " + curDocument.getAuthor() + " Title: " + curDocument.getTitle());
+
+				
 				if (action == 0) {
 					textArea.setText(sb.toString());
 				}

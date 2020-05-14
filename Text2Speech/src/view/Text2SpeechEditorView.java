@@ -52,12 +52,13 @@ public class Text2SpeechEditorView {
 	
 	//Basic window function
 	private void initialize() {
+		curDocument = new Document();
+		
 		frame = new JFrame("Text2Speech Editor");
 		frame.setBounds(100, 100, 500, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//Initialize Document
-		curDocument = new Document();
 		
 		//initialize sliders
 		JSlider rateSlider = new JSlider(0,1000,150);

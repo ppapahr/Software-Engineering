@@ -9,4 +9,10 @@ public interface TextToSpeechAPI {
 	
 	public void setPitch(int pitch);
 
+	public int getPitch();
+	
+	public int getRate();
+	
+	public int getVolume();
+
 }
