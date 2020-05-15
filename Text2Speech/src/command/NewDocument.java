@@ -48,6 +48,12 @@ public class NewDocument implements ActionListener {
 			textArea.setText("");
 			author = (String)JOptionPane.showInputDialog(frame, "Please enter an author: ","Create new document.",JOptionPane.PLAIN_MESSAGE);
 			title = (String)JOptionPane.showInputDialog(frame, "Please enter a title: ", "Create new document.",JOptionPane.PLAIN_MESSAGE);
+			if(author.trim().length() == 0) {
+				author = "None";
+			}
+			if(title.trim().length() == 0) {
+				title = "None";
+			}
 		}
 		
 		//Change document title,author and creation date.
@@ -55,8 +61,9 @@ public class NewDocument implements ActionListener {
 		curDocument.setTitle(title);
 		curDocument.setCreationDate(LocalDate.now());
 		curDocument.getContents().clear();
-		
-		frame.setTitle("Text2Speech Editor" + " Author: " + curDocument.getAuthor() + " Title: " + curDocument.getTitle());
+		if(test == 0) {
+			frame.setTitle("Text2Speech Editor" + " Author: " + curDocument.getAuthor() + " Title: " + curDocument.getTitle());
+		}
 	}
 	
 
