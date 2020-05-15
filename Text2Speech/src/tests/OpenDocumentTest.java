@@ -38,19 +38,20 @@ public class OpenDocumentTest {
 		
 		OpenDocument openDoc = new OpenDocument(null,null,dummyDoc);
 		openDoc.actionPerformed(null);
-				
+		
+		int it = 0;
 		//read Document.content text
 		StringBuilder listString = new StringBuilder();
-		for (int k=0; k<=1; k++) {
+		for (int k=0; k<dummyDoc.getContents().size(); k++) {
 			for (String s : dummyDoc.getContents().get(k).getWords()) 
 			{
-				if(s.length() == 0){
+				listString.append(s);
+				if(!(it == dummyDoc.getContents().get(k).getWords().size() - 1)) {
 					listString.append(" ");
 				}
-				else {
-					listString.append(s);
-				}
+				it +=1;
 			}
+			it = 0;
 			listString.append("\n");
 		}
 		
@@ -72,7 +73,7 @@ public class OpenDocumentTest {
 			//auto-generated catch block
 			e1.printStackTrace();
 		}
-
+		
 		//compare opened file text and actual file text
 		if (fileData.toString().equals(openedData.toString())){
 			System.out.println("OpenDocumentTest passed successfully.");
