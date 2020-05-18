@@ -24,6 +24,18 @@ public class TuneAudio implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		System.out.println("tune audio");
 		curDocument.tuneAudioSettings(volumeSlider.getValue(), rateSlider.getValue(),(int)pitchSpinner.getValue());
+		
+		//check if we are recording commands
+		if(CommandFactory.getStartReplayBool() == true) {
+			addCommandToArray();
+		}
+	}
+	
+	//add command to command array in ReplayCommand
+	public void addCommandToArray() {
+		TuneAudio replayTuneAudio = new TuneAudio(curDocument, volumeSlider, rateSlider, pitchSpinner);
+		ReplayCommand.addCommandToArraylist(replayTuneAudio);
 	}
 }

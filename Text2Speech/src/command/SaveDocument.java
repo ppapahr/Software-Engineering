@@ -27,6 +27,7 @@ public class SaveDocument implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		System.out.println("save");
 		//check if document has been created first so that saveDocument doesn't return error
 		if(curDocument.getCreationDate() == null) {
 			return;
@@ -92,6 +93,17 @@ public class SaveDocument implements ActionListener {
 	          } catch (IOException ex2) {}
 	       }
 	    }
+	   
+	    //check if we are recording commands
+	    if(CommandFactory.getStartReplayBool() == true) {
+	  	    addCommandToArray();
+	    }
+	}
+	
+	//add command to command array in ReplayCommand
+	public void addCommandToArray() {
+		SaveDocument replaySaveDocument = new SaveDocument(curDocument); 
+		ReplayCommand.addCommandToArraylist(replaySaveDocument);	
 	}
 	
 }

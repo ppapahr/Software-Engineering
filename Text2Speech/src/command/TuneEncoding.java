@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import encodingstrategies.EncodingStrategy;
 import encodingstrategies.StrategiesFactory;
 import model.Document;
-import model.Line;
 
 public class TuneEncoding implements ActionListener {
 	

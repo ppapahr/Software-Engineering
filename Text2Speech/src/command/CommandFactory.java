@@ -36,6 +36,11 @@ public class CommandFactory {
 	private TuneEncoding atBash;
 	
 	private TuneAudio tuneAudio;
+	
+	private ReplayCommand startReplay;
+	private ReplayCommand stopReplay;
+	private ReplayCommand playReplay;
+	private static boolean startReplayBool = false;
 
 	public CommandFactory(JTextArea textArea, JFrame frame, Document curDocument, JSlider volumeSlider, JSlider rateSlider, JSpinner pitchSpinner) {
 		//GUI Components
@@ -46,15 +51,12 @@ public class CommandFactory {
 		this.pitchSpinner = pitchSpinner;
 		//Document
 		this.curDocument = curDocument;
-		//Sound related GUI
-		
 	}
 
 	public ActionListener createCommand(String s) {
 		ActionListener temp = null;
 		if(s.equals("New")) {
 			newDocument = new NewDocument(textArea, frame, curDocument);
-			//can be added to arraylist here
 			return newDocument;
 		} else if(s.equals("Save")) {
 			saveDocument = new SaveDocument(curDocument);
@@ -77,8 +79,8 @@ public class CommandFactory {
 			return playReverseContents;
 		}
 		else if(s.equals("Play reverse line")) {
-			playReverseContents = new LineToSpeech(textArea, curDocument, 4);
-			return playReverseContents;
+			playReverseLine = new LineToSpeech(textArea, curDocument, 4);
+			return playReverseLine;
 		}
 		else if(s.equals("Play line")) {
 			playLine = new LineToSpeech(textArea, curDocument, 3);
@@ -104,7 +106,28 @@ public class CommandFactory {
 			tuneAudio = new TuneAudio(curDocument, volumeSlider, rateSlider, pitchSpinner);
 			return tuneAudio;
 		}
+		else if(s.equals("Start recording commands")){
+			startReplay = new ReplayCommand(3);
+			return startReplay;
+		}
+		else if(s.equals("Stop recording commands")){
+			stopReplay = new ReplayCommand(1);
+			return stopReplay;
+		}
+		else if(s.equals("Play recorded commands")){
+			playReplay = new ReplayCommand(2);
+			return playReplay;
+		}
 		//add other commands
 		return temp;
+	}
+	
+	//setter and getter for the start replay command operation
+	public static void setStartReplayBool(boolean value) {
+		 startReplayBool = value;
+	}
+	
+	public static boolean getStartReplayBool() {
+		return startReplayBool;
 	}
 }

@@ -22,7 +22,7 @@ public class EditDocument implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+		System.out.println("edit");
 		//variable for acceptable action performed
 		int action = -1;
 		
@@ -54,5 +54,16 @@ public class EditDocument implements ActionListener {
 			//set the curDoc's contents
 			curDocument.setContents(contents);
 		}
+		
+		//check if we are recording commands
+		if(CommandFactory.getStartReplayBool() == true) {
+			addCommandToArray();
+		}
+	}
+	
+	//add command to command array in ReplayCommand
+	public void addCommandToArray() {
+		EditDocument replayEditDocument = new EditDocument(textArea, curDocument);
+		ReplayCommand.addCommandToArraylist(replayEditDocument);
 	}
 }
