@@ -34,6 +34,7 @@ public class ReplayCommand implements ActionListener{
 	
 	//set start index in CommandFactory true 
 	public void startRecording(){
+		replayCommands.clear();
 		CommandFactory.setStartReplayBool(true);
 	}
 	
@@ -41,9 +42,7 @@ public class ReplayCommand implements ActionListener{
 	public void saveRecording(){
 		CommandFactory.setStartReplayBool(false);
 			
-		System.out.println(Arrays.toString(replayCommands.toArray()));
-		
-		//TODO save arraylist in main memory		
+		System.out.println(Arrays.toString(replayCommands.toArray()));		
 	}
 	
 	//add command to arraylist
