@@ -18,6 +18,8 @@ public class NewDocument implements ActionListener {
 	String author = "";
 	String title = "";
 	
+	//private CommandFactory commandBoolValue = new CommandFactory(null,null,null,null,null,null);
+	
 	//if test = 0 then we have not overloaded the constructor so we are not doing a JUnit Test
 	int test = 0;
 	
@@ -55,8 +57,18 @@ public class NewDocument implements ActionListener {
 		curDocument.setTitle(title);
 		curDocument.setCreationDate(LocalDate.now());
 		curDocument.getContents().clear();
+		
+		//check if we are recording commands
+		if(CommandFactory.getStartReplayBool() == true) {
+			addCommandToArray();
+		}
 	}
 	
 
 
+	//add command to command array in ReplayCommand
+	public void addCommandToArray() {
+		NewDocument replayNewDocument = new NewDocument(textArea, frame, curDocument);
+		ReplayCommand.addCommandToArraylist(replayNewDocument);
+	}
 }

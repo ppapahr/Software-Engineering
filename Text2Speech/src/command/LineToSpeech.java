@@ -1,13 +1,11 @@
 package command;
 
 import java.awt.event.*;
-import java.util.Collections;
 import javax.swing.*;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Utilities;
 
 import model.Document;
-import model.Line; 
 
 public class LineToSpeech implements ActionListener{
 	
@@ -52,20 +50,55 @@ public class LineToSpeech implements ActionListener{
 		}
 		if(chosenFunc == 1) {
 			curDocument.playContents();
+			
+			//check if we are recording commands
+			if(CommandFactory.getStartReplayBool() == true) {
+				addCommandToArray(chosenFunc);
+			}
 		} else if(chosenFunc == 2) {
 			curDocument.playReverseContents();
+			
+			//check if we are recording commands
+			if(CommandFactory.getStartReplayBool() == true) {
+				addCommandToArray(chosenFunc);
+			}
 		} else if(chosenFunc == 3) {
 			curDocument.playLine(this.getRowNumber());
+			
+			//check if we are recording commands
+			if(CommandFactory.getStartReplayBool() == true) {
+				addCommandToArray(chosenFunc);
+			}
 		} else if(chosenFunc == 4){
 			curDocument.playReverseLine(this.getRowNumber());
+			
+			//check if we are recording commands
+			if(CommandFactory.getStartReplayBool() == true) {
+				addCommandToArray(chosenFunc);
+			}
 		}
 		else if(chosenFunc == 5) {
 			curDocument.playEncodedContents();
+			
+			//check if we are recording commands
+			if(CommandFactory.getStartReplayBool() == true) {
+				addCommandToArray(chosenFunc);
+			}
 		}
 		else if(chosenFunc == 6) {
 			curDocument.playEncodedLine(getRowNumber());
+			
+			//check if we are recording commands
+			if(CommandFactory.getStartReplayBool() == true) {
+				addCommandToArray(chosenFunc);
+			}
 		}
-		
 	}
-
+	
+	//add command to command array in ReplayCommand
+	public void addCommandToArray(int chosenFunc) {
+		LineToSpeech replayLineToSpeech = new LineToSpeech(textArea, curDocument, chosenFunc);
+		//LineToSpeech replayLineToSpeech = this.clone();
+		ReplayCommand.addCommandToArraylist(replayLineToSpeech);
+	}
 }

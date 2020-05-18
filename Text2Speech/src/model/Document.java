@@ -69,7 +69,6 @@ public class Document {
 
 	//Text2speech functions
 	public void playContents() {
-
 		System.out.println("play contents");
 		//TextToSpeechAPI adapter = (TextToSpeechAPI) fact;
 		
