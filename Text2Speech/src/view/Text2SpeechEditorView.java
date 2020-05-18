@@ -127,10 +127,12 @@ public class Text2SpeechEditorView {
 		JMenu mnNewMenu = new JMenu("File");
 		JMenu mnPlayMenu = new JMenu("Play");
 		JMenu mnEncodeMenu = new JMenu("Encode");
+		JMenu mnReplayMenu = new JMenu("Replay");
 		
 		menuBar.add(mnNewMenu);
 		menuBar.add(mnPlayMenu);
 		menuBar.add(mnEncodeMenu);
+		menuBar.add(mnReplayMenu);
 
 		//Add menu items and actionListeners linking to commands
 		JMenuItem mntmNewMenuItem = new JMenuItem("New");
@@ -183,10 +185,29 @@ public class Text2SpeechEditorView {
 		mnEncodeMenu.add(mntmNewMenuItem_8);
 		mntmNewMenuItem_8.addActionListener(commandFactory.createCommand("AtBash"));
 		
+		//replay related commands
+		JRadioButtonMenuItem mntmNewMenuItem_11 = new JRadioButtonMenuItem("Start recording commands");
+		mnReplayMenu.add(mntmNewMenuItem_11);
+		mntmNewMenuItem_11.addActionListener(commandFactory.createCommand("Start recording commands"));
+		
+		JRadioButtonMenuItem mntmNewMenuItem_12 = new JRadioButtonMenuItem("Stop recording commands");
+		mnReplayMenu.add(mntmNewMenuItem_12);
+		mntmNewMenuItem_12.addActionListener(commandFactory.createCommand("Stop recording commands"));
+		
+		JRadioButtonMenuItem mntmNewMenuItem_13 = new JRadioButtonMenuItem("Play recorded commands");
+		mnReplayMenu.add(mntmNewMenuItem_13);
+		mntmNewMenuItem_13.addActionListener(commandFactory.createCommand("Play recorded commands"));
+		
 		//add buttonmenuitems to group in order for only one to be true at all times
 		ButtonGroup group = new ButtonGroup();
 		group.add(mntmNewMenuItem_8);
 		group.add(mntmNewMenuItem_7);
+		
+		ButtonGroup replayGroup = new ButtonGroup();
+		replayGroup.add(mntmNewMenuItem_11);
+		replayGroup.add(mntmNewMenuItem_12);
+		replayGroup.add(mntmNewMenuItem_13);
+
 		
 		//Add scroll pane to the frame
 		JScrollPane scrollPane = new JScrollPane();

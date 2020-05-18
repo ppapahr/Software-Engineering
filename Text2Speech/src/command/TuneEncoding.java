@@ -20,6 +20,7 @@ public class TuneEncoding implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		System.out.println("tune encoding");
 		//check if document exists
 		if(curDocument == null) {
 			System.out.println("No document found");
@@ -36,6 +37,11 @@ public class TuneEncoding implements ActionListener {
 			for(int i=0; i<curDocument.getContents().size(); i++) {
 				curDocument.getContents().get(i).tuneEncodingStrategy(encodingStrategy);
 			}
+			
+			//check if we are recording commands
+			if(CommandFactory.getStartReplayBool() == true) {
+				addCommandToArray(choice);
+			}
 		}
 		else if(choice == 2) {
 			encodingStrategy = factory.createStrategy("rot13");
@@ -44,7 +50,18 @@ public class TuneEncoding implements ActionListener {
 			for(int i=0; i<curDocument.getContents().size(); i++) {
 				curDocument.getContents().get(i).tuneEncodingStrategy(encodingStrategy);
 			}
+			
+			//check if we are recording commands
+			if(CommandFactory.getStartReplayBool() == true) {
+				addCommandToArray(choice);
+			}
 		}
 	}
 	
+	//add command to command array in ReplayCommand
+	public void addCommandToArray(int choice) {
+		TuneEncoding replayTuneEncoding = new TuneEncoding(curDocument, choice);
+		//TuneEncoding replayTuneEncoding = this;
+		ReplayCommand.addCommandToArraylist(replayTuneEncoding);
+	}
 }
