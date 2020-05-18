@@ -12,7 +12,6 @@ public class LineToSpeech implements ActionListener{
 	private Document curDocument;
 	private int chosenFunc;
 	private JTextArea textArea;
-	
 	/*
 	  chosenFunc can be one of the following numbers:
 	  1 --> playDocument
@@ -29,6 +28,7 @@ public class LineToSpeech implements ActionListener{
 		this.chosenFunc = chosenFunc;
 	}
 	
+	
 	public int getRowNumber() {
 		int caretPos = textArea.getCaretPosition();
 		int rowNum = (caretPos == 0) ? 1 : 0;
@@ -41,6 +41,10 @@ public class LineToSpeech implements ActionListener{
 		    rowNum++;
 		}
 		return rowNum;
+	}
+	
+	public void setChosenFunc(int num) {
+		this.chosenFunc = num;
 	}
 	
 	@Override

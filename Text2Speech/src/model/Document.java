@@ -16,14 +16,20 @@ public class Document {
 	private String title;
 	private LocalDate creationDate;
 	private LocalDate savedDate;
-
+	
 	public Document() {
 		this.contents = new ArrayList<Line>();
 		TextToSpeechAPIFactory fact = new TextToSpeechAPIFactory();
 		audioManager = fact.createTTSAPI("real");
+		author = "None";
+		title = "None";
 	}
 
 	//setters
+	public void setTTSAPI(TextToSpeechAPI adapter) {
+		this.audioManager = adapter;
+	}
+	
 	public void setCreationDate(LocalDate date) {
 		this.creationDate = date;
 	}
@@ -190,6 +196,10 @@ public class Document {
 
 	public void tuneEncodingStrategy(EncodingStrategy encodingStrategy) {
 		this.encodingStrategy = encodingStrategy;
+	}
+	
+	public String getEncodingStrategy() {
+		return encodingStrategy.toString();
 	}
 	
 	public void tuneAudioSettings(int volume, int rate, int pitch) {
