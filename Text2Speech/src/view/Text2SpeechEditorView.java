@@ -1,13 +1,11 @@
 package view;
 
 import java.awt.EventQueue;
-import java.util.ArrayList;
 import java.util.Hashtable;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JToolBar;
@@ -16,13 +14,9 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 
 import command.CommandFactory;
-import encodingstrategies.EncodingStrategy;
 import model.Document;
-import model.Line;
-import text2speechapis.TextToSpeechAPI;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
