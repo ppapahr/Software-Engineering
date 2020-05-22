@@ -57,7 +57,7 @@ public class TuneAudio implements ActionListener{
 		//check if we are recording commands
 		if(!isReplayed) {
 			if(replayBool.get(0) == true) {
-				TuneAudio copy = new TuneAudio(curDocument, volumeSliderRep, rateSliderRep, pitchSpinnerRep, commandList);
+				TuneAudio copy = new TuneAudio(curDocument, volumeSlider.getValue(), rateSlider.getValue(), (int)pitchSpinner.getValue(), commandList);
 				commandList.add(copy);
 			}
 		}
