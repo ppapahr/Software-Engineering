@@ -85,7 +85,7 @@ public class NewDocument implements ActionListener {
 		curDocument.getContents().clear();
 
 		//check if we are recording commands
-		if(!isReplayed) {
+		if(!isReplayed && test == 0) {
 			if(replayBool.get(0) == true) {
 				NewDocument copy = new NewDocument(textArea, frame,curDocument,author,title,commandList);
 				commandList.add(copy);
