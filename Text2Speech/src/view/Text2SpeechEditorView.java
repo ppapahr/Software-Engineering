@@ -56,7 +56,7 @@ public class Text2SpeechEditorView {
 		
 		//initialize sliders
 		JSlider rateSlider = new JSlider(0,1000,150);
-		JSlider soundSlider = new JSlider(0,100,50);
+		JSlider soundSlider = new JSlider(0,100,100);
 		//pitch spinner
 		JLabel spinnerText = new JLabel("<html>Pitch <br/>Level </html>", SwingConstants.CENTER);
 		spinnerText.setSize(10, 10);
