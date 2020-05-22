@@ -46,7 +46,7 @@ public class SpeechEncodingTest {
 		textArea.append("test");
 		
 		//Create LineToSpeech command
-		LineToSpeech command = new LineToSpeech(textArea, testDoc, 1,null,null);
+		LineToSpeech command = new LineToSpeech(1,textArea, testDoc, 1,null,null);
 		
 		//Create an encoding strategy (Rot13, AtBash etc)
 		Rot13Encoding encodingStrategy = new Rot13Encoding();
@@ -88,6 +88,8 @@ public class SpeechEncodingTest {
 		if(!adapter.getTestOutput().equals("Guvf vf ")) {
 			fail("Failure at play reverse contents");
 		}
+		
+		System.out.println("Test Case: Speech and Endoding test passed");
 	}
 
 }

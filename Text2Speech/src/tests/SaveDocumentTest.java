@@ -53,7 +53,7 @@ public class SaveDocumentTest {
 		
 		//test if saved text file contains the correct info
 		if(data.equals("Author: John\r\n" + "Title: Title1\r\n" + "Creation Date: " + LocalDate.now().toString() + "\r\n" + "Saved Date: " + LocalDate.now().toString() + "\r\n" + "This is \r\n" + "test \r\n")) {
-			System.out.println("SaveDocument passed successfully");
+			System.out.println("Test Case: SaveDocument test passed.");
 		} else {
 			fail("SaveDocument test failed");
 		}

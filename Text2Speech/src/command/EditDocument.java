@@ -57,10 +57,10 @@ public class EditDocument implements ActionListener {
 		//ArrayList<Line> contents = new ArrayList<Line>();
 		ArrayList<String> lines = new ArrayList<String>();
 
-		//for testing pass existing text
+		//for testing add a line to contents instead from text area.
 		if (test == 1) {
-			String l[] = "This is the \nedited text".split("\\r?\\n");
-			Collections.addAll(lines, l);
+			lines.add("test");
+			curDocument.setContents(contents);
 		}
 		else{
 			String l[] = textArea.getText().split("\\r?\\n"); 
@@ -79,7 +79,7 @@ public class EditDocument implements ActionListener {
 		//System.out.print(Arrays.toString(contents.toArray()));
 
 		//check if we are recording commands
-		if(!isReplayed) {
+		if(!isReplayed && test==0) {
 			if(replayBool.get(0) == true) {
 				EditDocument copy = new EditDocument(textArea, curDocument, commandList);
 				commandList.add(copy);

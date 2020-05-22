@@ -45,7 +45,7 @@ public class EditDocumentTest {
 		editDoc.actionPerformed(null);
 		
 		if(contents != dummyDoc.getContents()) {
-			System.out.println("EditDocumentTest passed successfully.");
+			System.out.println("Test Case: EditDocument test passed successfully.");
 		}
 		else {
 			fail("EditDocument Test Failed");

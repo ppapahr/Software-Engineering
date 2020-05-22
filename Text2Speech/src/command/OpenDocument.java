@@ -184,7 +184,7 @@ public class OpenDocument implements ActionListener{
 		curDocument.setContents(contents);
 		
 		//check if we are recording commands
-		if(!isReplayed) {
+		if(!isReplayed && test == 0) {
 			if(replayBool.get(0) == true) {
 				OpenDocument copy = new OpenDocument(textArea, frame, curDocument, contents, author, title, creationDate, savedDate, commandList);
 				commandList.add(copy);

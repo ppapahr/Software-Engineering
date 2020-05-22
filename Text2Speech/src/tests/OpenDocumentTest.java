@@ -76,7 +76,7 @@ public class OpenDocumentTest {
 		
 		//compare opened file text and actual file text
 		if (fileData.toString().equals(openedData.toString())){
-			System.out.println("OpenDocumentTest passed successfully.");
+			System.out.println("Test Case: OpenDocument test passed.");
 		}
 		else {
 			fail("OpenDocument Test Failed");

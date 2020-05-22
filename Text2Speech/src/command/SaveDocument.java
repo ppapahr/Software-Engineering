@@ -115,7 +115,7 @@ public class SaveDocument implements ActionListener {
 	    }
 	   
 	  //check if we are recording commands
-	  if(!isReplayed) {
+	  if(!isReplayed && TEST_FLAG == 0) {
 	  	if(replayBool.get(0) == true) {
 	  		SaveDocument copy = new SaveDocument(curDocument, saveAsFileChooser, commandList);
 	 		commandList.add(copy);

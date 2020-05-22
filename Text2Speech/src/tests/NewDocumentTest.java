@@ -42,7 +42,7 @@ public class NewDocumentTest {
 		////Test case 2: filled document with words/line
 		newDocument.createNewDocument();
 		if(dummyDoc.getContents().size() == 0) {
-			System.out.println("NewDocumentTest passed successfully.");
+			System.out.println("Test Case: NewDocument test passed.");
 		}
 		else {
 			fail("NewDocument Test 2 Failed: New Document previously filled not empty.");
