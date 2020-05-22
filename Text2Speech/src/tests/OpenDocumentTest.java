@@ -36,7 +36,7 @@ public class OpenDocumentTest {
 		    }
 		
 		
-		OpenDocument openDoc = new OpenDocument(null,null,dummyDoc);
+		OpenDocument openDoc = new OpenDocument(null,null,dummyDoc,1);
 		openDoc.actionPerformed(null);
 		
 		int it = 0;

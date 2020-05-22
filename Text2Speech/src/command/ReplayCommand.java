@@ -6,11 +6,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ReplayCommand implements ActionListener{
-	private static ArrayList<ActionListener> replayCommands = new ArrayList<ActionListener>();
+	private static ArrayList<ActionListener> replayCommands;
 	private int saveIndex;
+	boolean startCommand;
 	
-	public ReplayCommand(int saveIndex){
+	private ArrayList<Boolean> replayBool = new ArrayList<Boolean>();
+	
+	public ReplayCommand(int saveIndex, ArrayList<ActionListener> commandList, ArrayList<Boolean> replayBool){
+		this.replayCommands = commandList;
 		this.saveIndex = saveIndex;
+		this.startCommand = startCommand;
+		this.replayBool = replayBool;
 	}
 	
 	@Override
@@ -35,13 +41,14 @@ public class ReplayCommand implements ActionListener{
 	//set start index in CommandFactory true 
 	public void startRecording(){
 		replayCommands.clear();
-		CommandFactory.setStartReplayBool(true);
+		replayBool.set(0, true);
 	}
 	
 	//read log file for header and close it with end header
 	public void saveRecording(){
-		CommandFactory.setStartReplayBool(false);
-			
+		replayBool.set(0, false);
+
+
 		System.out.println(Arrays.toString(replayCommands.toArray()));		
 	}
 	

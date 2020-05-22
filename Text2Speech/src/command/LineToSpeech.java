@@ -1,17 +1,19 @@
 package command;
 
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import javax.swing.*;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Utilities;
-
 import model.Document;
 
 public class LineToSpeech implements ActionListener{
 	
-	private Document curDocument;
-	private int chosenFunc;
-	private JTextArea textArea;
+	Document curDocument;
+	int chosenFunc = 0;
+	JTextArea textArea;
 	/*
 	  chosenFunc can be one of the following numbers:
 	  1 --> playDocument
@@ -22,10 +24,30 @@ public class LineToSpeech implements ActionListener{
 	  6 --> playEncodedLine
 	*/
 	
-	public LineToSpeech(JTextArea textArea, Document curDocument, int chosenFunc) {
+	private ArrayList<ActionListener> commandList = new ArrayList<ActionListener>();
+	
+	private ArrayList<Boolean> replayBool = new ArrayList<Boolean>();
+	
+	int caretPos = 0;
+	//bool that check if command is a copy of another
+	boolean isReplayed = false;
+	
+	public LineToSpeech(JTextArea textArea, Document curDocument, int chosenFunc,ArrayList<ActionListener> commandList,ArrayList<Boolean> replayBool) {
 		this.textArea = textArea;
 		this.curDocument = curDocument;
 		this.chosenFunc = chosenFunc;
+		this.commandList = commandList;
+		this.replayBool = replayBool;
+	}
+	
+	//replay constructor
+	public LineToSpeech(JTextArea textArea, Document curDocument, int chosenFunc,int caretPos, ArrayList<ActionListener> commandList) {
+		this.textArea = textArea;
+		this.curDocument = curDocument;
+		this.chosenFunc = chosenFunc;
+		this.commandList = commandList;
+		isReplayed = true;
+		this.caretPos = caretPos;
 	}
 	
 	
@@ -50,59 +72,79 @@ public class LineToSpeech implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(curDocument.getContents().size() == 0) {
+			System.out.print("empty document");
 			return;
 		}
 		if(chosenFunc == 1) {
+			//System.out.print(Arrays.toString(curDocument.getContents().toArray()));
 			curDocument.playContents();
 			
 			//check if we are recording commands
-			if(CommandFactory.getStartReplayBool() == true) {
-				addCommandToArray(chosenFunc);
+			if(!isReplayed) {
+				if(replayBool.get(0) == true) {
+					LineToSpeech copy = new LineToSpeech(textArea, curDocument, chosenFunc, caretPos,  commandList);
+					commandList.add(copy);
+				}
 			}
 		} else if(chosenFunc == 2) {
 			curDocument.playReverseContents();
 			
 			//check if we are recording commands
-			if(CommandFactory.getStartReplayBool() == true) {
-				addCommandToArray(chosenFunc);
+			if(!isReplayed) {
+				if(replayBool.get(0) == true) {
+					LineToSpeech copy = new LineToSpeech(textArea, curDocument, chosenFunc, caretPos,  commandList);
+					commandList.add(copy);
+				}
 			}
 		} else if(chosenFunc == 3) {
-			curDocument.playLine(this.getRowNumber());
-			
+			if(isReplayed == false) {
+				curDocument.playLine(this.getRowNumber());
+			}
+			else{curDocument.playLine(caretPos);}
 			//check if we are recording commands
-			if(CommandFactory.getStartReplayBool() == true) {
-				addCommandToArray(chosenFunc);
+			if(!isReplayed) {
+				if(replayBool.get(0) == true) {
+					LineToSpeech copy = new LineToSpeech(textArea, curDocument, chosenFunc, caretPos,  commandList);
+					commandList.add(copy);
+				}
 			}
 		} else if(chosenFunc == 4){
-			curDocument.playReverseLine(this.getRowNumber());
+			if(isReplayed == false) {
+				curDocument.playReverseLine(this.getRowNumber());
+			}
+			
+			else{curDocument.playReverseLine(caretPos);}
 			
 			//check if we are recording commands
-			if(CommandFactory.getStartReplayBool() == true) {
-				addCommandToArray(chosenFunc);
+			if(!isReplayed) {
+				if(replayBool.get(0) == true) {
+					LineToSpeech copy = new LineToSpeech(textArea, curDocument, chosenFunc, caretPos,  commandList);
+					commandList.add(copy);
+				}
 			}
-		}
-		else if(chosenFunc == 5) {
+		} else if(chosenFunc == 5) {
 			curDocument.playEncodedContents();
 			
 			//check if we are recording commands
-			if(CommandFactory.getStartReplayBool() == true) {
-				addCommandToArray(chosenFunc);
+			if(!isReplayed) {
+				if(replayBool.get(0) == true) {
+					LineToSpeech copy = new LineToSpeech(textArea, curDocument, chosenFunc, caretPos,  commandList);
+					commandList.add(copy);
+				}
 			}
-		}
-		else if(chosenFunc == 6) {
-			curDocument.playEncodedLine(getRowNumber());
+		} else if(chosenFunc == 6) {
+			if(isReplayed == false) {
+				curDocument.playEncodedLine(this.getRowNumber());
+			}
+			else{curDocument.playEncodedLine(caretPos);}
 			
 			//check if we are recording commands
-			if(CommandFactory.getStartReplayBool() == true) {
-				addCommandToArray(chosenFunc);
+			if(!isReplayed) {
+				if(replayBool.get(0) == true) {
+					LineToSpeech copy = new LineToSpeech(textArea, curDocument, chosenFunc, caretPos,  commandList);
+					commandList.add(copy);
+				}
 			}
 		}
-	}
-	
-	//add command to command array in ReplayCommand
-	public void addCommandToArray(int chosenFunc) {
-		LineToSpeech replayLineToSpeech = new LineToSpeech(textArea, curDocument, chosenFunc);
-		//LineToSpeech replayLineToSpeech = this.clone();
-		ReplayCommand.addCommandToArraylist(replayLineToSpeech);
 	}
 }

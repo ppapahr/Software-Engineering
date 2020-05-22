@@ -46,7 +46,7 @@ public class SpeechEncodingTest {
 		textArea.append("test");
 		
 		//Create LineToSpeech command
-		LineToSpeech command = new LineToSpeech(textArea, testDoc, 1);
+		LineToSpeech command = new LineToSpeech(textArea, testDoc, 1,null,null);
 		
 		//Create an encoding strategy (Rot13, AtBash etc)
 		Rot13Encoding encodingStrategy = new Rot13Encoding();

@@ -15,14 +15,33 @@ public class SaveDocument implements ActionListener {
 	private Document curDocument;
 	private int TEST_FLAG;
 	
-	public SaveDocument(Document curDocument) {
+	private ArrayList<ActionListener> commandList = new ArrayList<ActionListener>();
+	
+	private ArrayList<Boolean> replayBool = new ArrayList<Boolean>();
+	
+	JFileChooser saveAsFileChooser = new JFileChooser();;
+	//bool that check if command is a copy of another
+	boolean isReplayed = false;
+		
+	public SaveDocument(Document curDocument,ArrayList<ActionListener> commandList,ArrayList<Boolean> replayBool) {
 		this.curDocument = curDocument;
 		this.TEST_FLAG = 0;
+		this.commandList = commandList;
+		this.replayBool = replayBool;
 	}
 	
+	//test constructor
 	public SaveDocument(Document curDocument, int TEST_FLAG) {
 		this.curDocument = curDocument;
 		this.TEST_FLAG = TEST_FLAG;
+	}
+	
+	//replay constructor
+	public SaveDocument(Document curDocument, JFileChooser saveAsFileChooser,ArrayList<ActionListener> commandList) {
+		this.curDocument = curDocument;
+		isReplayed = true;
+		this.commandList = commandList;
+		this.saveAsFileChooser = saveAsFileChooser;
 	}
 
 	@Override
@@ -53,18 +72,19 @@ public class SaveDocument implements ActionListener {
 			savedText.append("\n");
 		}
 		
-		//open gui dialog
-		FileNameExtensionFilter extensionFilter = new FileNameExtensionFilter("Text File", "txt");
-	    final JFileChooser saveAsFileChooser = new JFileChooser();
-	    saveAsFileChooser.setApproveButtonText("Save");
-	    saveAsFileChooser.setFileFilter(extensionFilter);
-	    if(TEST_FLAG == 0) {
-	    	int actionDialog = saveAsFileChooser.showOpenDialog(null);
-		    if (actionDialog != JFileChooser.APPROVE_OPTION) {
-		         return;
+		if(TEST_FLAG == 0 && isReplayed == false) {
+			//open gui dialog
+			FileNameExtensionFilter extensionFilter = new FileNameExtensionFilter("Text File", "txt");
+		    saveAsFileChooser.setApproveButtonText("Save");
+		    saveAsFileChooser.setFileFilter(extensionFilter);
+		    if(TEST_FLAG == 0) {
+		    	int actionDialog = saveAsFileChooser.showOpenDialog(null);
+			    if (actionDialog != JFileChooser.APPROVE_OPTION) {
+			         return;
+			    }
 		    }
-	    }
-	    
+		}
+		
 	    File file;
 		if(TEST_FLAG == 0) {
 			file = saveAsFileChooser.getSelectedFile();
@@ -94,16 +114,12 @@ public class SaveDocument implements ActionListener {
 	       }
 	    }
 	   
-	    //check if we are recording commands
-	    if(CommandFactory.getStartReplayBool() == true) {
-	  	    addCommandToArray();
-	    }
-	}
-	
-	//add command to command array in ReplayCommand
-	public void addCommandToArray() {
-		SaveDocument replaySaveDocument = new SaveDocument(curDocument); 
-		ReplayCommand.addCommandToArraylist(replaySaveDocument);	
-	}
-	
+	  //check if we are recording commands
+	  if(!isReplayed) {
+	  	if(replayBool.get(0) == true) {
+	  		SaveDocument copy = new SaveDocument(curDocument, saveAsFileChooser, commandList);
+	 		commandList.add(copy);
+	 	}
+	 }
+	}	
 }

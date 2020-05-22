@@ -41,7 +41,7 @@ public class EditDocumentTest {
 		dummyDoc.setContents(contents);
 		 				
 		//call EditDocument to change dummyDoc
-		EditDocument editDoc = new EditDocument(null,dummyDoc);
+		EditDocument editDoc = new EditDocument(null,dummyDoc,1);
 		editDoc.actionPerformed(null);
 		
 		if(contents != dummyDoc.getContents()) {

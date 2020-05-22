@@ -15,55 +15,75 @@ public class EditDocument implements ActionListener {
 	private JTextArea textArea;
 	private Document curDocument;
 	
-	public EditDocument(JTextArea textArea, Document curDocument) {
+	private ArrayList<ActionListener> commandList = new ArrayList<ActionListener>();
+	
+	private ArrayList<Boolean> replayBool = new ArrayList<Boolean>();
+	
+	ArrayList<Line> contents = new ArrayList<Line>();
+	
+	//if test = 0 then we are not doing a JUnit Test
+	int test = 0;
+		
+	//bool that check if command is a copy of another
+	boolean isReplayed = false;
+	
+	public EditDocument(JTextArea textArea, Document curDocument,ArrayList<ActionListener> commandList,ArrayList<Boolean> replayBool) {
 		this.textArea = textArea;
 		this.curDocument = curDocument;
+		this.commandList = commandList;
+		this.replayBool = replayBool;
+	}
+	
+	//replay constructor
+	public EditDocument(JTextArea textArea, Document curDocument,ArrayList<ActionListener> commandList) {
+		this.textArea = textArea;
+		this.curDocument = curDocument;
+		isReplayed = true;
+		this.commandList = commandList;
+	}
+	
+	//test constructor
+	public EditDocument(JTextArea textArea, Document curDocument,int test) {
+		this.textArea = textArea;
+		this.curDocument = curDocument;
+		this.test = test;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("edit");
 		//variable for acceptable action performed
-		int action = -1;
 		
-		ArrayList<Line> contents = new ArrayList<Line>();
+		//ArrayList<Line> contents = new ArrayList<Line>();
 		ArrayList<String> lines = new ArrayList<String>();
 
 		//for testing pass existing text
-		if (e == null) {
+		if (test == 1) {
 			String l[] = "This is the \nedited text".split("\\r?\\n");
 			Collections.addAll(lines, l);
-			action = 1;
 		}
-		else {
+		else{
 			String l[] = textArea.getText().split("\\r?\\n"); 
 			Collections.addAll(lines, l);
-			action = 0;
-		}
-			
-				
-		if (action == 0 || action == 1) {
-			
+		
 			//split each line by whitespace characters and add the split list to line class object which is then added to contents
 			for(int i=0; i<lines.size(); i++) {
 				ArrayList<String> words = new ArrayList<>(Arrays.asList(lines.get(i).split("\\s+")));
 				Line temp = new Line(words);
 				contents.add(temp);
 			}
-			
 			//set the curDoc's contents
 			curDocument.setContents(contents);
 		}
 		
+		//System.out.print(Arrays.toString(contents.toArray()));
+
 		//check if we are recording commands
-		if(CommandFactory.getStartReplayBool() == true) {
-			addCommandToArray();
+		if(!isReplayed) {
+			if(replayBool.get(0) == true) {
+				EditDocument copy = new EditDocument(textArea, curDocument, commandList);
+				commandList.add(copy);
+			}
 		}
-	}
-	
-	//add command to command array in ReplayCommand
-	public void addCommandToArray() {
-		EditDocument replayEditDocument = new EditDocument(textArea, curDocument);
-		ReplayCommand.addCommandToArraylist(replayEditDocument);
 	}
 }
