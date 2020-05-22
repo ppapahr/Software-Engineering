@@ -189,7 +189,7 @@ public class Text2SpeechEditorView {
 		mnReplayMenu.add(mntmNewMenuItem_12);
 		mntmNewMenuItem_12.addActionListener(commandFactory.createCommand("Stop recording commands"));
 		
-		JRadioButtonMenuItem mntmNewMenuItem_13 = new JRadioButtonMenuItem("Play recorded commands");
+		JMenuItem mntmNewMenuItem_13 = new JMenuItem("Play recorded commands");
 		mnReplayMenu.add(mntmNewMenuItem_13);
 		mntmNewMenuItem_13.addActionListener(commandFactory.createCommand("Play recorded commands"));
 		
