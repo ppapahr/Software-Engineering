@@ -87,7 +87,7 @@ public class Text2SpeechEditorView {
 		         
 		Hashtable<Integer, JLabel> position = new Hashtable<Integer, JLabel>();
 		position.put(0, new JLabel("0"));
-		position.put(100, new JLabel("Sound Level"));
+		position.put(50, new JLabel("Sound Level"));
 		position.put(100, new JLabel("100"));
 		         
 		// Set the label to be drawn

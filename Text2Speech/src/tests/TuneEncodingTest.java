@@ -1,4 +1,4 @@
-package text2speechapis;
+package tests;
 
 import static org.junit.Assert.fail;
 
