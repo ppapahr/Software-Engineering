@@ -52,8 +52,7 @@ public class TuneAudio implements ActionListener{
 		if(isReplayed == false) {
 			curDocument.tuneAudioSettings(volumeSlider.getValue(), rateSlider.getValue(),(int)pitchSpinner.getValue());
 		}
-		
-		curDocument.tuneAudioSettings(volumeSliderRep,rateSliderRep,pitchSpinnerRep);
+		else{curDocument.tuneAudioSettings(volumeSliderRep,rateSliderRep,pitchSpinnerRep);}
 		
 		//check if we are recording commands
 		if(!isReplayed) {
