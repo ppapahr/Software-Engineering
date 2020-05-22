@@ -13,7 +13,9 @@ public class ReplayCommand implements ActionListener{
 	private ArrayList<Boolean> replayBool = new ArrayList<Boolean>();
 	
 	public ReplayCommand(int saveIndex, ArrayList<ActionListener> commandList, ArrayList<Boolean> replayBool){
+		this.replayCommands = commandList;
 		this.saveIndex = saveIndex;
+		this.startCommand = startCommand;
 		this.replayBool = replayBool;
 	}
 	
