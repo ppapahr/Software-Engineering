@@ -3,7 +3,6 @@ package model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import encodingstrategies.*;
 import text2speechapis.*;
 
@@ -50,6 +49,7 @@ public class Document {
 		this.contents = contents;
 	}
 
+	
 	//getters
 	public String getAuthor() {
 		return author;
@@ -71,13 +71,9 @@ public class Document {
 		return contents;
 	}
 
-	
-
 	//Text2speech functions
 	public void playContents() {
 		System.out.println("play contents");
-		//TextToSpeechAPI adapter = (TextToSpeechAPI) fact;
-		
 		//convert contents into a string
 		StringBuilder contentStringBuilder = new StringBuilder();
 		for (int k=0; k<contents.size(); k++) {
@@ -96,10 +92,7 @@ public class Document {
 	}
 
 	public void playReverseContents() {
-		System.out.println("play Reverse Contents");
-		//TextToSpeechAPIFactory fact = new TextToSpeechAPIFactory();
-		//audioManager = fact.createTTSAPI("real");
-		
+		System.out.println("play Reverse Contents");		
 		//convert contents into a string
 		String contentString = new String();
 		for (int k=0; k<contents.size(); k++) {
@@ -119,9 +112,7 @@ public class Document {
 		    	string = temp[k] + " " + string;
 		    }
 	    }
-	   
 	   audioManager.play(string);
-	    
 	}
 
 	public void playLine(int num) {
@@ -174,7 +165,6 @@ public class Document {
 			}
 			contentStringBuilder.append("\n");
 		}
-		//System.out.println(encodingStrategy.encode(contentStringBuilder.toString()));
 		audioManager.play(encodingStrategy.encode(contentStringBuilder.toString()));
 	}
 

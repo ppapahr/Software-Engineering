@@ -7,13 +7,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
-
 import javax.swing.*;
 import javax.swing.filechooser.*;
-
 import model.Document;
 import model.Line;
-
 
 public class OpenDocument implements ActionListener{
 	
@@ -38,9 +35,11 @@ public class OpenDocument implements ActionListener{
 	
 	int test = 0;
 	String textAreaRe = "";
+	
 	//bool that check if command is a copy of another
 	boolean isReplayed = false;
 		
+	//constructor
 	public OpenDocument(JTextArea textArea, JFrame frame, Document curDocument,ArrayList<ActionListener> commandList,ArrayList<Boolean> replayBool) {
 		this.textArea = textArea;
 		this.frame = frame;
@@ -76,6 +75,7 @@ public class OpenDocument implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("open");
 		System.out.println(curDocument.getContents());
+		
 		//create file chooser
         fc = new JFileChooser();
         fc.setFileFilter(new FileNameExtensionFilter("TEXT FILES", "txt", "text"));
@@ -169,6 +169,7 @@ public class OpenDocument implements ActionListener{
 			}
 		}
 		
+		//if command is a copy then set textArea from constructor
 		if(test==0 && isReplayed==true) {
 			textArea.setText(textAreaRe.toString());
 			frame.setTitle("Text2Speech Editor" + " Author: " + curDocument.getAuthor() + " Title: " + curDocument.getTitle());
@@ -188,9 +189,8 @@ public class OpenDocument implements ActionListener{
 		curDocument.setCreationDate(creationDate);
 		curDocument.setSavedDate(savedDate);
 		curDocument.setContents(contents);
-		//System.out.println(textArea.getText());
 		System.out.println(curDocument.getCreationDate());
-		//System.out.println(contents);
+
 		//check if we are recording commands
 		if(!isReplayed && test == 0) {
 			if(replayBool.get(0) == true) {

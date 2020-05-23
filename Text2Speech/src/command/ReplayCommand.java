@@ -8,14 +8,12 @@ import java.util.Arrays;
 public class ReplayCommand implements ActionListener{
 	private static ArrayList<ActionListener> replayCommands;
 	private int saveIndex;
-	boolean startCommand;
 	
 	private ArrayList<Boolean> replayBool = new ArrayList<Boolean>();
 	
 	public ReplayCommand(int saveIndex, ArrayList<ActionListener> commandList, ArrayList<Boolean> replayBool){
-		this.replayCommands = commandList;
+		ReplayCommand.replayCommands = commandList;
 		this.saveIndex = saveIndex;
-		this.startCommand = startCommand;
 		this.replayBool = replayBool;
 	}
 	
@@ -31,6 +29,7 @@ public class ReplayCommand implements ActionListener{
 			startRecording();	
 		}			
 	}
+	
 	//read log file and remplay commands
 	public void replay(ArrayList<ActionListener> replayCommands){
 		for(int i=0; i<replayCommands.size(); i++) {

@@ -52,8 +52,6 @@ public class Text2SpeechEditorView {
 		frame.setBounds(100, 100, 500, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		//Initialize Document
-		
 		//initialize sliders
 		JSlider rateSlider = new JSlider(0,1000,150);
 		JSlider soundSlider = new JSlider(0,100,100);
@@ -75,7 +73,6 @@ public class Text2SpeechEditorView {
 
 		//initialize menubars
 		JMenuBar menuBar = new JMenuBar();
-
 		toolBar.add(menuBar);
 
 		//add sliders
@@ -84,7 +81,6 @@ public class Text2SpeechEditorView {
 		
 		// Set the labels to be painted on the slider
 		soundSlider.setPaintLabels(true);
-		         
 		Hashtable<Integer, JLabel> position = new Hashtable<Integer, JLabel>();
 		position.put(0, new JLabel("0"));
 		position.put(50, new JLabel("Sound Level"));
@@ -202,14 +198,13 @@ public class Text2SpeechEditorView {
 		replayGroup.add(mntmNewMenuItem_11);
 		replayGroup.add(mntmNewMenuItem_12);
 		replayGroup.add(mntmNewMenuItem_13);
-
 		
 		//Add scroll pane to the frame
 		JScrollPane scrollPane = new JScrollPane();
 		frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
+		
 		//add text area to scroll pane
 		scrollPane.setViewportView(textArea);
-		
 		textArea.setWrapStyleWord(true);
 		textArea.setLineWrap(true);	
 	}
@@ -226,5 +221,4 @@ public class Text2SpeechEditorView {
 			}
 		});
 	}
-	
 }

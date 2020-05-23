@@ -2,10 +2,8 @@ package command;
 
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import javax.swing.*;
 import javax.swing.JTextArea;
-
 import model.Document;
 
 public class CommandFactory {
@@ -45,10 +43,9 @@ public class CommandFactory {
 	private static boolean startReplayBool = false;
 	
 	private ArrayList<ActionListener> commandList = new ArrayList<ActionListener>();
+	
 	//arraylist in order to pass boolean by reference 
 	private ArrayList<Boolean> replayBool = new ArrayList<Boolean>();
-	
-
 
 	public CommandFactory(JTextArea textArea, JFrame frame, Document curDocument, JSlider volumeSlider, JSlider rateSlider, JSpinner pitchSpinner) {
 		//GUI Components

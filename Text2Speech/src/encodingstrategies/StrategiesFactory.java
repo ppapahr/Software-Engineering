@@ -4,8 +4,9 @@ public class StrategiesFactory {
 	
 	private EncodingStrategy dummyEncodingStrategy;
 
-	
-	public StrategiesFactory() {}
+	public StrategiesFactory() {
+		
+	}
 	
 	//instantiates and returns an encoding strategy depending on a string
 	public EncodingStrategy createStrategy(String s) {

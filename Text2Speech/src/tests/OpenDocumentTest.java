@@ -2,13 +2,11 @@ package tests;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-
 import java.io.IOException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.util.Scanner;
-
 import command.OpenDocument;
 import model.Document;
 
@@ -19,7 +17,6 @@ public class OpenDocumentTest {
 	
 	@Test
 	public void test() {
-		
 		//create dummy file
 		try {
 		      FileWriter myWriter = new FileWriter("testFile.txt");
@@ -82,5 +79,4 @@ public class OpenDocumentTest {
 			fail("OpenDocument Test Failed");
 		}
 	}
-
 }

@@ -4,10 +4,8 @@ import java.awt.event.*;
 import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
-
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
 import model.Document; 
 
 public class SaveDocument implements ActionListener {
@@ -19,10 +17,12 @@ public class SaveDocument implements ActionListener {
 	
 	private ArrayList<Boolean> replayBool = new ArrayList<Boolean>();
 	
-	JFileChooser saveAsFileChooser = new JFileChooser();;
+	JFileChooser saveAsFileChooser = new JFileChooser();
+	
 	//bool that check if command is a copy of another
 	boolean isReplayed = false;
 		
+	//constructor
 	public SaveDocument(Document curDocument,ArrayList<ActionListener> commandList,ArrayList<Boolean> replayBool) {
 		this.curDocument = curDocument;
 		this.TEST_FLAG = 0;
@@ -92,7 +92,6 @@ public class SaveDocument implements ActionListener {
 			file = new File("test.txt");
 		}
 	    
-	    
 	    if (!file.getName().endsWith(".txt")) {
 	       file = new File(file.getAbsolutePath() + ".txt");
 	    }
@@ -101,7 +100,6 @@ public class SaveDocument implements ActionListener {
 	    BufferedWriter outFile = null;
 	    try {
 	       outFile = new BufferedWriter(new FileWriter(file));
-
 	       savedText.write(outFile);
 
 	    } catch (IOException ex) {
@@ -114,12 +112,12 @@ public class SaveDocument implements ActionListener {
 	       }
 	    }
 	   
-	  //check if we are recording commands
-	  if(!isReplayed && TEST_FLAG == 0) {
-	  	if(replayBool.get(0) == true) {
-	  		SaveDocument copy = new SaveDocument(curDocument, saveAsFileChooser, commandList);
-	 		commandList.add(copy);
-	 	}
-	 }
-	}	
+		//check if we are recording commands
+		if(!isReplayed && TEST_FLAG == 0) {
+			if(replayBool.get(0) == true) {
+				SaveDocument copy = new SaveDocument(curDocument, saveAsFileChooser, commandList);
+		 		commandList.add(copy);
+		 	}
+		}
+	}
 }

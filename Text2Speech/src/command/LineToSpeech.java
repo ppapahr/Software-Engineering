@@ -2,8 +2,6 @@ package command;
 
 import java.awt.event.*;
 import java.util.ArrayList;
-import java.util.Arrays;
-
 import javax.swing.*;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Utilities;
@@ -12,8 +10,9 @@ import model.Document;
 public class LineToSpeech implements ActionListener{
 	
 	Document curDocument;
-	int chosenFunc = 0;
 	JTextArea textArea;
+	
+	int chosenFunc = 0;
 	/*
 	  chosenFunc can be one of the following numbers:
 	  1 --> playDocument
@@ -25,15 +24,15 @@ public class LineToSpeech implements ActionListener{
 	*/
 	
 	private ArrayList<ActionListener> commandList = new ArrayList<ActionListener>();
-	
 	private ArrayList<Boolean> replayBool = new ArrayList<Boolean>();
 	
 	int caretPos = 0;
+	int test = 0;
+	
 	//bool that check if command is a copy of another
 	boolean isReplayed = false;
 	
-	int test = 0;
-	
+	//constructor
 	public LineToSpeech(JTextArea textArea, Document curDocument, int chosenFunc,ArrayList<ActionListener> commandList,ArrayList<Boolean> replayBool) {
 		this.textArea = textArea;
 		this.curDocument = curDocument;
@@ -42,6 +41,7 @@ public class LineToSpeech implements ActionListener{
 		this.replayBool = replayBool;
 	}
 	
+	//test constructor
 	public LineToSpeech(int test,JTextArea textArea, Document curDocument, int chosenFunc,ArrayList<ActionListener> commandList,ArrayList<Boolean> replayBool) {
 		this.test = test;
 		this.textArea = textArea;
@@ -87,9 +87,7 @@ public class LineToSpeech implements ActionListener{
 			return;
 		}
 		if(chosenFunc == 1) {
-			//System.out.print(Arrays.toString(curDocument.getContents().toArray()));
 			curDocument.playContents();
-			
 			//check if we are recording commands
 			if(!isReplayed && test == 0) {
 				if(replayBool.get(0) == true) {
@@ -99,7 +97,6 @@ public class LineToSpeech implements ActionListener{
 			}
 		} else if(chosenFunc == 2) {
 			curDocument.playReverseContents();
-			
 			//check if we are recording commands
 			if(!isReplayed && test == 0) {
 				if(replayBool.get(0) == true) {
@@ -125,7 +122,6 @@ public class LineToSpeech implements ActionListener{
 			}
 			
 			else{curDocument.playReverseLine(caretPos);}
-			
 			//check if we are recording commands
 			if(!isReplayed && test == 0) {
 				if(replayBool.get(0) == true) {
@@ -135,7 +131,6 @@ public class LineToSpeech implements ActionListener{
 			}
 		} else if(chosenFunc == 5) {
 			curDocument.playEncodedContents();
-			
 			//check if we are recording commands
 			if(!isReplayed && test == 0) {
 				if(replayBool.get(0) == true) {
@@ -148,7 +143,6 @@ public class LineToSpeech implements ActionListener{
 				curDocument.playEncodedLine(this.getRowNumber());
 			}
 			else{curDocument.playEncodedLine(caretPos);}
-			
 			//check if we are recording commands
 			if(!isReplayed && test == 0) {
 				if(replayBool.get(0) == true) {

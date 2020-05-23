@@ -3,13 +3,11 @@ package command;
 import java.awt.event.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
-
 import javax.swing.*;
-
 import model.Document;
 
 public class NewDocument implements ActionListener {
-
+	
 	//GUI Components
 	JTextArea textArea;
 	JFrame frame;
@@ -66,15 +64,23 @@ public class NewDocument implements ActionListener {
 		System.out.println("new");
 		//Reasons of use of JOptionPane simple popup:
 		//Easy to use/get returned strings, Not alot of code needed, fast to implement and user friendly
-		if(test == 0 && isReplayed == false) {
+		if(test == 0) {
 			textArea.setText("");
-			author = (String)JOptionPane.showInputDialog(frame, "Please enter an author: ","Create new document.",JOptionPane.PLAIN_MESSAGE);
-			title = (String)JOptionPane.showInputDialog(frame, "Please enter a title: ", "Create new document.",JOptionPane.PLAIN_MESSAGE);
-			if(author.trim().length() == 0) {
-				author = "None";
-			}
-			if(title.trim().length() == 0) {
-				title = "None";
+			if(isReplayed == false) {
+				author = (String)JOptionPane.showInputDialog(frame, "Please enter an author: ","Create new document.",JOptionPane.PLAIN_MESSAGE);
+				title = (String)JOptionPane.showInputDialog(frame, "Please enter a title: ", "Create new document.",JOptionPane.PLAIN_MESSAGE);
+				if(author == null) {
+					author = "None";
+				}
+				else if(author.trim().length() == 0) {
+					author = "None";
+				}
+				if(title == null) {
+					title = "None";
+				}
+				else if(title.trim().length() == 0) {
+					title = "None";
+				}
 			}
 		}
 
@@ -96,5 +102,4 @@ public class NewDocument implements ActionListener {
 
 		}
 	}
-
 }

@@ -3,15 +3,10 @@ package tests;
 import static org.junit.Assert.*;
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import org.junit.Test;
-
 import command.EditDocument;
-import command.OpenDocument;
 import model.Document;
 import model.Line;
 
@@ -24,8 +19,8 @@ public class EditDocumentTest {
 	public void test() {
 		
 		ArrayList<Line> contents = new ArrayList<Line>();
-
 		ArrayList<String> lines = new ArrayList<String>();
+		
 		lines.add("This is a");
 		lines.add("test text");
 		lines.add("in a test file");
@@ -51,5 +46,4 @@ public class EditDocumentTest {
 			fail("EditDocument Test Failed");
 		}
 	}
-
 }

@@ -1,9 +1,7 @@
 package tests;
 
 import static org.junit.Assert.fail;
-
 import org.junit.Test;
-
 import encodingstrategies.StrategiesFactory;
 import encodingstrategies.TemplateEncoding;
 import model.Document;
@@ -37,6 +35,5 @@ public class TuneEncodingTest {
 		else {
 			fail("Test Case 2: Rot13 test failed.");
 		}
-		
 	}
 }

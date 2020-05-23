@@ -1,20 +1,16 @@
 package tests;
 
 import static org.junit.Assert.*;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
-
 import org.junit.Test;
-
 import model.*;
 import command.SaveDocument;
 
 public class SaveDocumentTest {
-	
 	
 	@Test
 	public void test() {
@@ -49,8 +45,6 @@ public class SaveDocumentTest {
 			e.printStackTrace();
 		}
 		
-		//System.out.println(data);
-		
 		//test if saved text file contains the correct info
 		if(data.equals("Author: John\r\n" + "Title: Title1\r\n" + "Creation Date: " + LocalDate.now().toString() + "\r\n" + "Saved Date: " + LocalDate.now().toString() + "\r\n" + "This is \r\n" + "test \r\n")) {
 			System.out.println("Test Case: SaveDocument test passed.");
@@ -58,5 +52,4 @@ public class SaveDocumentTest {
 			fail("SaveDocument test failed");
 		}
 	}
-
 }

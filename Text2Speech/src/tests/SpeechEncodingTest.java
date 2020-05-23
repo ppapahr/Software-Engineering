@@ -1,18 +1,14 @@
 package tests;
 
 import static org.junit.Assert.*;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
-
 import javax.swing.JTextArea;
-
 import org.junit.Test;
 import model.*;
 import encodingstrategies.*;
 import text2speechapis.*;
 import command.LineToSpeech;
-
 
 public class SpeechEncodingTest {
 
@@ -89,7 +85,6 @@ public class SpeechEncodingTest {
 			fail("Failure at play reverse contents");
 		}
 		
-		System.out.println("Test Case: Speech and Endoding test passed");
+		System.out.println("Test Case: Speech and Encoding test passed");
 	}
-
 }

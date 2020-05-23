@@ -23,6 +23,21 @@ public class FakeTextToSpeechAPI implements TextToSpeechAPI{
 		return testOutput;
 	}
 	
+	@Override
+	public int getPitch() {
+		return pitch;
+	}
+	
+	@Override
+	public int getRate() {
+		return rate;
+	}
+	
+	@Override
+	public int getVolume() {
+		return volume;
+	}
+	
 	//setters
 	@Override
 	public void setVolume(int volume) {
@@ -37,20 +52,5 @@ public class FakeTextToSpeechAPI implements TextToSpeechAPI{
 	@Override
 	public void setPitch(int pitch) {
 		this.pitch = pitch;
-	}
-	
-	@Override
-	public int getPitch() {
-		return pitch;
-	}
-	
-	@Override
-	public int getRate() {
-		return rate;
-	}
-	
-	@Override
-	public int getVolume() {
-		return volume;
 	}
 }

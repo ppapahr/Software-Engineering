@@ -3,10 +3,8 @@ package command;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import javax.swing.JSlider;
 import javax.swing.JSpinner;
-
 import model.Document;
 
 public class TuneAudio implements ActionListener{
@@ -21,12 +19,12 @@ public class TuneAudio implements ActionListener{
 	int pitchSpinnerRep;
 	
 	private ArrayList<ActionListener> commandList = new ArrayList<ActionListener>();
-	
 	private ArrayList<Boolean> replayBool = new ArrayList<Boolean>();
 	
 	//bool that check if command is a copy of another
 	boolean isReplayed = false;
 	
+	//constructor
 	public TuneAudio(Document curDocument, JSlider volumeSlider, JSlider rateSlider, JSpinner pitchSpinner,ArrayList<ActionListener> commandList,ArrayList<Boolean> replayBool) {
 		this.curDocument = curDocument;
 		this.volumeSlider = volumeSlider;

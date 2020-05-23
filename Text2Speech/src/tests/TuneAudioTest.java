@@ -1,17 +1,12 @@
 package tests;
 
 import static org.junit.Assert.*;
-
-import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
-
 import org.junit.Test;
-
 import text2speechapis.TextToSpeechAPI;
 import text2speechapis.TextToSpeechAPIFactory;
 
 public class TuneAudioTest {
-	
 	
 	@Test
 	public void test() {
@@ -33,5 +28,4 @@ public class TuneAudioTest {
 			fail("Test Case: TuneAudio test failed.");
 		}
 	}
-	
 }

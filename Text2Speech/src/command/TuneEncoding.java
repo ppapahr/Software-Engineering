@@ -3,7 +3,6 @@ package command;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import encodingstrategies.EncodingStrategy;
 import encodingstrategies.StrategiesFactory;
 import model.Document;
@@ -14,12 +13,12 @@ public class TuneEncoding implements ActionListener {
 	private int choice;
 	
 	private ArrayList<ActionListener> commandList = new ArrayList<ActionListener>();
-	
 	private ArrayList<Boolean> replayBool = new ArrayList<Boolean>();
 	
 	//bool that check if command is a copy of another
 	boolean isReplayed = false;
 	
+	//constructor
 	public TuneEncoding(Document curDocument, int choice,ArrayList<ActionListener> commandList,ArrayList<Boolean> replayBool) {
 		this.curDocument = curDocument;
 		this.choice = choice;
@@ -50,6 +49,7 @@ public class TuneEncoding implements ActionListener {
 		if(choice == 1) {
 			encodingStrategy = factory.createStrategy("atbash");
 			curDocument.tuneEncodingStrategy(encodingStrategy);
+			
 			//tune encoding for all the lines in doc
 			for(int i=0; i<curDocument.getContents().size(); i++) {
 				curDocument.getContents().get(i).tuneEncodingStrategy(encodingStrategy);
@@ -66,6 +66,7 @@ public class TuneEncoding implements ActionListener {
 		else if(choice == 2) {
 			encodingStrategy = factory.createStrategy("rot13");
 			curDocument.tuneEncodingStrategy(encodingStrategy);
+			
 			//tune encoding for all the lines in doc
 			for(int i=0; i<curDocument.getContents().size(); i++) {
 				curDocument.getContents().get(i).tuneEncodingStrategy(encodingStrategy);

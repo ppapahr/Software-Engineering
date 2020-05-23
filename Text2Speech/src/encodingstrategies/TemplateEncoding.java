@@ -18,7 +18,5 @@ public abstract class TemplateEncoding implements EncodingStrategy {
 		String encodedS = new String(charArray);
 		return encodedS;
 	}
-	
 	public abstract char mapCharacter(char c);
-	
 }

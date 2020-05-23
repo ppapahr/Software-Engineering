@@ -51,9 +51,7 @@ public class EditDocument implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("edit");
-		//variable for acceptable action performed
-		
+		System.out.println("edit");		
 		//ArrayList<Line> contents = new ArrayList<Line>();
 		ArrayList<String> lines = new ArrayList<String>();
 
@@ -76,8 +74,6 @@ public class EditDocument implements ActionListener {
 			curDocument.setContents(contents);
 		}
 		
-		//System.out.print(Arrays.toString(contents.toArray()));
-
 		//check if we are recording commands
 		if(!isReplayed && test==0) {
 			if(replayBool.get(0) == true) {

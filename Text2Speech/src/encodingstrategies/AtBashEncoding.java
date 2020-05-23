@@ -6,9 +6,6 @@ public class AtBashEncoding extends TemplateEncoding{
 		
 	}
 	
-	
-
-
 	@Override
 	public char mapCharacter(char c) {
 		//if char is a letter we subtract from the last letter the ascii number of c and add the first letter to return to the original range
@@ -33,5 +30,4 @@ public class AtBashEncoding extends TemplateEncoding{
 		System.out.println("Something's wrong");
 		return 0;
 	}
-
 }

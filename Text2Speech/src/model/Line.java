@@ -25,14 +25,12 @@ public class Line {
 		this.audioManager = audioManager;
 	}
 	
-	//getters
-	
+	//getter
 	public ArrayList<String> getWords() {
 		return words;
 	}
 	
 	// Text2Speech & Encoding functions
-	
 	public void playLine() {
 		//create string from arraylist
 		String voice = "";
@@ -67,7 +65,6 @@ public class Line {
 			voice += words.get(i);
 			voice += " ";
 		}
-				
 		//play text
 		audioManager.play(encodingStrategy.encode(voice));
 	}

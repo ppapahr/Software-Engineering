@@ -1,11 +1,8 @@
 package tests;
 
 import static org.junit.Assert.*;
-
 import java.util.ArrayList;
-
 import org.junit.Test;
-
 import command.NewDocument;
 import model.Document;
 import model.Line;
@@ -18,9 +15,6 @@ public class NewDocumentTest {
 	ArrayList<Line> dummyContent = new ArrayList<Line>();
 	
 	NewDocument newDocument = new NewDocument(null, null, dummyDoc,1);
-
-	
-	
 	
 	@Test
 	public void test() {
@@ -47,8 +41,5 @@ public class NewDocumentTest {
 		else {
 			fail("NewDocument Test 2 Failed: New Document previously filled not empty.");
 		}
-
-
 	}
-	
 }

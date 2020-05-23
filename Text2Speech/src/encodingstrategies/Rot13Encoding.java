@@ -4,9 +4,7 @@ public class Rot13Encoding extends TemplateEncoding{
 	
 	public Rot13Encoding() {
 		
-	}
-
-	
+	}	
 
 	@Override
 	public char mapCharacter(char c) {
@@ -43,5 +41,4 @@ public class Rot13Encoding extends TemplateEncoding{
 		System.out.println("Something's wrong");
 		return 0;
 	}
-
 }
