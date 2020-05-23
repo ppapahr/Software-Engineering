@@ -37,7 +37,7 @@ public class OpenDocument implements ActionListener{
 	private ArrayList<Boolean> replayBool = new ArrayList<Boolean>();
 	
 	int test = 0;
-		
+	String textAreaRe = "";
 	//bool that check if command is a copy of another
 	boolean isReplayed = false;
 		
@@ -58,7 +58,8 @@ public class OpenDocument implements ActionListener{
 	}
 	
 	//replay constructor
-	public OpenDocument(JTextArea textArea, JFrame frame, Document curDocument,ArrayList<Line> contents,  String author, String title, LocalDate creationDate, LocalDate savedDate,ArrayList<ActionListener> commandList) {
+	public OpenDocument(JTextArea textArea,String textAreaRe, JFrame frame, Document curDocument,ArrayList<Line> contents,  String author, String title, LocalDate creationDate, LocalDate savedDate,ArrayList<ActionListener> commandList) {
+		this.textAreaRe = textAreaRe;
 		this.textArea = textArea;
 		this.frame = frame;
 		this.curDocument = curDocument;
@@ -74,7 +75,7 @@ public class OpenDocument implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("open");
-		
+		System.out.println(curDocument.getContents());
 		//create file chooser
         fc = new JFileChooser();
         fc.setFileFilter(new FileNameExtensionFilter("TEXT FILES", "txt", "text"));
@@ -131,7 +132,7 @@ public class OpenDocument implements ActionListener{
 				StringBuilder tsb = new StringBuilder();
 				
 				//empty contents from before
-				contents = new ArrayList<Line>();
+				contents.clear();
 				
 				//load StringBuilder and Line class with the rest of the file
 				while(input.hasNext()) {
@@ -168,6 +169,11 @@ public class OpenDocument implements ActionListener{
 			}
 		}
 		
+		if(test==0 && isReplayed==true) {
+			textArea.setText(textAreaRe.toString());
+			frame.setTitle("Text2Speech Editor" + " Author: " + curDocument.getAuthor() + " Title: " + curDocument.getTitle());
+		}
+		
 		//load document with title,author,creation date,saved date and text.
 		if(author.equals("")) {
 			curDocument.setAuthor("None");
@@ -182,11 +188,13 @@ public class OpenDocument implements ActionListener{
 		curDocument.setCreationDate(creationDate);
 		curDocument.setSavedDate(savedDate);
 		curDocument.setContents(contents);
-		
+		//System.out.println(textArea.getText());
+		System.out.println(curDocument.getCreationDate());
+		//System.out.println(contents);
 		//check if we are recording commands
 		if(!isReplayed && test == 0) {
 			if(replayBool.get(0) == true) {
-				OpenDocument copy = new OpenDocument(textArea, frame, curDocument, contents, author, title, creationDate, savedDate, commandList);
+				OpenDocument copy = new OpenDocument(textArea, textArea.getText(), frame, curDocument, contents, author, title, creationDate, savedDate, commandList);
 				commandList.add(copy);
 			}
 		}
