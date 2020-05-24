@@ -46,7 +46,6 @@ public class TuneAudio implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("tune audio");		
 		if(isReplayed == false) {
 			curDocument.tuneAudioSettings(volumeSlider.getValue(), rateSlider.getValue(),(int)pitchSpinner.getValue());
 		}

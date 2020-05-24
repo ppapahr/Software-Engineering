@@ -73,7 +73,6 @@ public class Document {
 
 	//Text2speech functions
 	public void playContents() {
-		System.out.println("play contents");
 		//convert contents into a string
 		StringBuilder contentStringBuilder = new StringBuilder();
 		for (int k=0; k<contents.size(); k++) {
@@ -92,7 +91,6 @@ public class Document {
 	}
 
 	public void playReverseContents() {
-		System.out.println("play Reverse Contents");		
 		//convert contents into a string
 		String contentString = new String();
 		for (int k=0; k<contents.size(); k++) {
@@ -116,7 +114,6 @@ public class Document {
 	}
 
 	public void playLine(int num) {
-		System.out.println("play Line");
 		//check if the row num returned from LineToSpeech is within limits and then if the row is empty
 		if(num <= contents.size()){
 			if(!contents.get(num-1).getWords().isEmpty()) {
@@ -128,7 +125,6 @@ public class Document {
 	}
 	
 	public void playReverseLine(int num) {
-		System.out.println("Play Reverse Line");
 		//check if the row num returned from LineToSpeech is within limits
 		if(num <= contents.size()) {
 			//create string for reverse process 		    
@@ -147,7 +143,6 @@ public class Document {
 
 	//Encoding functions
 	public void playEncodedContents() {
-		System.out.println("Play Encoded Contents");
 		//if encodingStrategy doesnt exist dont proceed
 		if(encodingStrategy == null) {
 			return;
@@ -169,7 +164,6 @@ public class Document {
 	}
 
 	public void playEncodedLine(int num) {
-		System.out.println("play encoded line");
 		//if encodingStrategy doesnt exist dont proceed
 		if(encodingStrategy == null) {
 			return;
@@ -193,7 +187,6 @@ public class Document {
 	}
 	
 	public void tuneAudioSettings(int volume, int rate, int pitch) {
-		System.out.println("tune audio settings");
 		audioManager.setVolume(volume);
 		audioManager.setRate(rate);
 		audioManager.setPitch(pitch);

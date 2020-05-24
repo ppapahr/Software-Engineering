@@ -61,7 +61,6 @@ public class NewDocument implements ActionListener {
 	}
 
 	public void createNewDocument() {
-		System.out.println("new");
 		//Reasons of use of JOptionPane simple popup:
 		//Easy to use/get returned strings, Not alot of code needed, fast to implement and user friendly
 		if(test == 0) {

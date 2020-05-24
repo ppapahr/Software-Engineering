@@ -73,10 +73,7 @@ public class OpenDocument implements ActionListener{
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		System.out.println("open");
-		//System.out.println(curDocument.getContents());
-		
+	public void actionPerformed(ActionEvent e) {		
 		//create file chooser
         fc = new JFileChooser();
         fc.setFileFilter(new FileNameExtensionFilter("TEXT FILES", "txt", "text"));
@@ -154,9 +151,6 @@ public class OpenDocument implements ActionListener{
 	            	tsb.setLength(0);
 	            }
 	            input.close();
-				
-	            //add line to replay String for passing by reference
-            	//replayString = sb.toString();
 	   
 				if(test == 0) {
 					textArea.setText(sb.toString());
@@ -193,8 +187,6 @@ public class OpenDocument implements ActionListener{
 		curDocument.setCreationDate(creationDate);
 		curDocument.setSavedDate(savedDate);
 		curDocument.setContents(contents);
-		//System.out.println(this.curDocument.getContents());
-		//System.out.println(this.contents);
 
 		//check if we are recording commands
 		if(!isReplayed && test == 0) {

@@ -46,7 +46,6 @@ public class SaveDocument implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("save");
 		//check if document has been created first so that saveDocument doesn't return error
 		if(curDocument.getCreationDate() == null) {
 			return;

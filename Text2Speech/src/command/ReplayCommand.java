@@ -3,7 +3,6 @@ package command;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ReplayCommand implements ActionListener{
 	private static ArrayList<ActionListener> replayCommands;
@@ -46,9 +45,6 @@ public class ReplayCommand implements ActionListener{
 	//read log file for header and close it with end header
 	public void saveRecording(){
 		replayBool.set(0, false);
-
-
-		System.out.println(Arrays.toString(replayCommands.toArray()));		
 	}
 	
 	//add command to arraylist
