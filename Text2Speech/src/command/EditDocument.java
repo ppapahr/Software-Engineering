@@ -55,8 +55,8 @@ public class EditDocument implements ActionListener {
 		ArrayList<String> lines = new ArrayList<String>();
 
 		//Empty already existing contents
-		contents = new ArrayList<Line>();
-				
+		contents = new ArrayList<Line>();		
+
 		//for testing add a line to contents instead from text area.
 		if (test == 1) {
 			lines.add("test");
