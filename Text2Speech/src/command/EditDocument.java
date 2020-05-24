@@ -50,8 +50,6 @@ public class EditDocument implements ActionListener {
 	}
 	
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		System.out.println("edit");		
 	public void actionPerformed(ActionEvent e) {	
 		//ArrayList<Line> contents = new ArrayList<Line>();
 		ArrayList<String> lines = new ArrayList<String>();
