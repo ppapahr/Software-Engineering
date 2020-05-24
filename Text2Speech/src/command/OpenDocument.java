@@ -34,6 +34,7 @@ public class OpenDocument implements ActionListener{
 	private ArrayList<Boolean> replayBool = new ArrayList<Boolean>();
 	
 	int test = 0;
+	String replayString = "";
 	String textAreaRe = "";
 	
 	//bool that check if command is a copy of another
@@ -74,7 +75,7 @@ public class OpenDocument implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("open");
-		System.out.println(curDocument.getContents());
+		//System.out.println(curDocument.getContents());
 		
 		//create file chooser
         fc = new JFileChooser();
@@ -154,9 +155,12 @@ public class OpenDocument implements ActionListener{
 	            }
 	            input.close();
 				
+	            //add line to replay String for passing by reference
+            	//replayString = sb.toString();
+	   
 				if(test == 0) {
 					textArea.setText(sb.toString());
-					frame.setTitle("Text2Speech Editor" + " Author: " + curDocument.getAuthor() + " Title: " + curDocument.getTitle());
+					frame.setTitle("Text2Speech Editor" + " Author: " + author + " Title: " + title);
 				}
 				
 	            //reset StringBuilder buffer
@@ -172,7 +176,7 @@ public class OpenDocument implements ActionListener{
 		//if command is a copy then set textArea from constructor
 		if(test==0 && isReplayed==true) {
 			textArea.setText(textAreaRe.toString());
-			frame.setTitle("Text2Speech Editor" + " Author: " + curDocument.getAuthor() + " Title: " + curDocument.getTitle());
+			frame.setTitle("Text2Speech Editor" + " Author: " + author + " Title: " + title);
 		}
 		
 		//load document with title,author,creation date,saved date and text.
@@ -189,7 +193,8 @@ public class OpenDocument implements ActionListener{
 		curDocument.setCreationDate(creationDate);
 		curDocument.setSavedDate(savedDate);
 		curDocument.setContents(contents);
-		System.out.println(curDocument.getCreationDate());
+		//System.out.println(this.curDocument.getContents());
+		//System.out.println(this.contents);
 
 		//check if we are recording commands
 		if(!isReplayed && test == 0) {
